@@ -1,0 +1,55 @@
+.imagediv{
+    background-image: url("../../assets/images/loginpage.jpg");
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.logingeneldiv{
+    border-radius: 30px;
+    background-color: white;
+    overflow: hidden;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.inputlogin{
+    border: none;
+    outline: none;
+    width: 100%;
+    padding: 0.3rem !important;
+    border-radius: 10px;
+}
+
+.inputdiv{
+    width: 70%;
+    display: flex;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 20px;
+    padding: 0.3rem !important;
+    overflow: hidden;
+    margin-top: 1rem !important;
+}
+
+.lablell{
+    background-color: white;
+}
+
+.buttonlogin{
+    padding: 5px 20px !important;
+    border-radius: 20px;
+    border: none;
+    margin-top: 1rem !important;
+    background-color: #2196F3;
+    color: white;
+    font-weight: bold;
+}
+
+.buttonlogin:hover{
+
+    background-color: rgb(22, 106, 175);
+}
+
+.buttonlogin:active{
+    background-color: rgb(14, 60, 97);
+
+}

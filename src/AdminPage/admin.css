@@ -1,0 +1,82 @@
+*{
+    padding: 0 !important;
+    margin: 0 !important;
+    
+}
+.bgw{
+    background-color: white;
+}
+html,body,#root{
+    min-height: 100vh;
+    
+}
+.minh100{
+    height: 100vh;
+    min-height: 100%;
+    
+}
+
+.row{
+    margin: 0 !important;
+    
+}
+
+.left-button{
+    color: white;
+    background-color: #cb0c9f;
+    border: none;
+
+    width: 100% !important;
+    padding: 8px !important;
+    /* padding: 8px 3rem !important; */
+
+}
+
+
+.left-button:hover{
+    background-color: #ad0a87;
+}
+
+.ulleft{
+    text-decoration: none;
+    list-style: none;
+}
+
+.ulleft li {
+    width: 100%;
+    text-align: center;
+}
+/* 
+.css-1elwnq4-MuiPaper-root-MuiAccordion-root{
+    height: 100px !important;
+} */
+
+.accordionlist li{
+    list-style:none;
+    padding-left: 35px !important;
+    color: white;
+}
+
+
+.accordionlist li:hover{
+    background-color: white;
+    transition: 0.3s;
+    color: black;
+}
+.cursorpointer{
+    cursor: pointer;
+}
+
+.text-underline:hover{
+    cursor: pointer;
+}
+
+
+.css-8zxigv-MuiButtonBase-root-MuiAccordionSummary-root:hover{
+    color: white;
+    transition: 0.3s;
+    background-color: #627594;
+}
+
+.aaaaaaa{
+}

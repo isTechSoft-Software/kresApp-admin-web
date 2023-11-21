@@ -1,0 +1,48 @@
+.profilename{
+    font-weight: bold;
+    font-size: 30px;
+}
+
+
+.profilebottombox1{
+    height: 90%;
+    background-color: white;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    width: 49%;
+    border-radius: 20px;
+    padding: 1rem !important;
+}
+
+
+.buttonsprofile{
+    background-color: white;
+    padding: 0.2rem !important;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    margin-top: 10px !important;
+    border-radius: 10px;
+    cursor: pointer;
+
+}
+
+
+.profileinput{
+    border: none;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    padding: 0.3rem !important;
+    border-radius: 20px;
+    outline: none;
+}
+.profilespans{
+    font-weight: bold;
+    font-size: larger;
+}
+
+.profilelinks{
+    color: blue;
+    cursor: pointer;
+}
+
+.profilelinks:hover{
+    text-decoration: underline;
+}

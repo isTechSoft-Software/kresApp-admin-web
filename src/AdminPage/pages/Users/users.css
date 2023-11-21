@@ -1,0 +1,64 @@
+.users{
+    height: 100vh;
+}
+
+.userlists{
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+.aramausers{
+    border: none;
+    outline: none;
+    margin: 0.5rem !important;
+}
+
+
+.aramadiv{
+    border-radius: 10px;
+    padding-left: 0.3rem !important;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    width: 25%;
+}
+
+.tabbutton{
+    padding: 0.5rem!important;
+    width: 100%;
+    
+    color: white;
+    font-weight: bold;
+    background-color: #2196F3;
+    border-radius: 20px;
+    border: none;
+    margin-top: 1rem !important;
+}
+
+.basilibutton{
+    background-color: rgb(14, 60, 97);
+
+}
+
+
+
+.eachh{
+    min-height: 50px;
+    margin-top: 0.5rem !important;
+    margin-bottom: 0.5rem !important;
+    border-radius: 20px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+}
+
+.collar{
+    align-self: center;
+}
+
+
+.listt{
+    overflow: auto;
+    height: 70vh;
+}
+.listtt{
+    height: 75vh;
+}

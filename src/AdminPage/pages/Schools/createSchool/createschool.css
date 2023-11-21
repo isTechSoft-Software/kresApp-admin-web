@@ -1,0 +1,45 @@
+.createschooldiv{
+    min-height: 100vh;
+    padding: 3rem !important;
+}
+
+.altcrt{
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    padding: 2rem !important;
+    width: 70%;
+    min-height: 80vh;
+}
+
+.inpp{
+    border: none;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+    outline: none;
+    resize: none;
+    padding: 1rem !important;
+    border-radius: 20px;
+    margin: 0.5rem !important;
+}
+.inpp:focus{
+    border: 1px solid gray;
+}
+
+.btncreate{
+    padding: 0.5rem !important;
+    border: none;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    color: white;
+    background-color: #2196F3;
+    border-radius: 20px;
+}
+
+.btncreate:hover{
+
+    background-color: rgb(22, 106, 175);
+}
+
+.btncreate:active{
+    background-color: rgb(14, 60, 97);
+
+}

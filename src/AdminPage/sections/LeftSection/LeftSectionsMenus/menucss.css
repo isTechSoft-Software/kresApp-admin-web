@@ -1,0 +1,28 @@
+.buttban{
+    border: none;
+    background-color: white;
+    color: red;
+    cursor: pointer;
+    margin-right: 1rem !important;
+}
+
+.buttallow{
+    border: none;
+    background-color: white;
+    color: green;
+    cursor: pointer;
+
+}
+.buttsearch{
+    border: none;
+    background-color: white;
+    color: rgb(46, 158, 192);
+    cursor: pointer;
+
+}
+
+
+.anynotif{
+    border-radius: 10px;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+}

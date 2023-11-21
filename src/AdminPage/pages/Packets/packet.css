@@ -1,0 +1,75 @@
+.eachpacket{
+
+    min-height: 300px;
+    max-height: 480px;
+    width: 270px;
+    background-color: white;
+    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: auto;
+}
+
+.aciklama{
+    max-height: 120px;
+    overflow: auto;
+}
+
+.genel{
+    width: 85%;
+    height: 95%;
+}
+
+.packetimg{
+    height: 45%;
+    /* background-image: url("../../assets/images/hediye.jpg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; */
+    
+}
+
+.packetbody{
+    height: 55%;
+}
+.buttonspacket{
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    color: red;
+    margin-right: 0.5rem !important;
+}
+.buttonspacketedit{
+    border: none;
+    background-color: white;
+    cursor: pointer;
+    color: rgb(74, 148, 185);
+    margin-right: 0.5rem !important;
+}
+
+
+.packetinputchange{
+    
+    border: none;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    padding: 0.3rem !important;
+    outline: none;
+    border-radius: 20px;
+}
+.changedtextarea{
+    outline: none;
+    width: 99%;
+    border-radius: 20px;
+    border: none;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.4);
+    padding: 0.3rem !important;
+    resize: none;
+    text-wrap:balance;
+}
+
+.spanaciklama{
+    width: 50px;
+    word-wrap: break-word;
+}
+

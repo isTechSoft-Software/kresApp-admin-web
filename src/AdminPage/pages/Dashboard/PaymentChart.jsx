@@ -1,0 +1,26 @@
+import * as React from 'react';
+
+import { LineChart } from '@mui/x-charts/LineChart';
+function PaymentChart({paymentArray}) {
+  return (
+    <LineChart
+      xAxis={[
+        {
+          id: 'barCategories',
+          data: ['Ocak', 'Şub', 'Mart', "Nis","May", "Haz","Tem", "Ağus", "Eyl" , "Ekim", "Kas", "Ara"],
+          scaleType: 'band',
+        },
+      ]}
+      series={[
+        {
+          data: paymentArray,
+        },
+      ]}
+      width={450}
+      height={300}
+    />
+  );
+}
+
+
+export default PaymentChart;

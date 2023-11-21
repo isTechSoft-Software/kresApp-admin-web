@@ -1,0 +1,20 @@
+.listschools{
+  width: 100%;
+  padding: 2rem !important;
+  height: calc(100vh - 4rem);
+  background-color: white;
+  border: none;
+  border-radius: 20px;
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+  overflow: auto;
+}
+.sp{
+  text-align: center;
+}
+
+.eachscool{
+  box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
+  padding: 0.6rem !important;
+  border-radius: 20px;
+
+}
