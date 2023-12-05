@@ -24,15 +24,15 @@ function EachSchool({ owner, school }) {
 
     return (
 
-        <div className="d-flex mt-3 eachscool cursorpointer" onClick={handleClick} style={{ color: colors.text.focus }} >
-            <span className="col-1 fw-bold sp">{school.id}</span>
-            <span className="col-1 fw-bold sp">{school.packetID}</span>
-            <span className="col-3 fw-bold sp">{school.schoolName}</span>
-            <span className="col-3 fw-bold sp">{owner.ownerName}</span>
-            <span className="col-3 fw-bold sp">{createDate.getDate().toString().padStart(2, '0')}/
+        <div className="d-flex mt-3 col-lg-12 col-12 eachscool cursorpointer overflow-auto" onClick={handleClick} style={{ color: colors.text.focus }} >
+            <span className="col-lg-1 mbbild fw-bold sp">{school.id}</span>
+            <span className="col-lg-1 mbbild fw-bold sp">{school.packetID}</span>
+            <span className="col-lg-3 mbbild fw-bold sp">{school.schoolName}</span>
+            <span className="col-lg-3 mbbild fw-bold sp">{owner.ownerName}</span>
+            <span className="col-lg-3 mbbild fw-bold sp">{createDate.getDate().toString().padStart(2, '0')}/
                 {(createDate.getMonth() + 1).toString().padStart(2, '0')}/
                 {createDate.getFullYear()}</span>
-            <div className="col-1 d-flex justify-content-around">
+            <div className="col-lg-1 d-flex justify-content-around">
                 <div className="cursorpointer"  style={{color: colors.info.main}}>
                     <EditNoteIcon></EditNoteIcon>
                 </div>

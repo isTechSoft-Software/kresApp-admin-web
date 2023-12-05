@@ -111,3 +111,13 @@
   .ovvv{
     overflow: auto;
   }
+
+
+  @media screen and (max-width: 768px) {
+    
+    .mbbild{
+      margin-right: 1rem !important;
+    }
+    
+}
+ 

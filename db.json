@@ -1,5 +1,75 @@
 {
 
+    "lastBought":{
+        "success": 1,
+        "data": [{
+            "name": "Joee",
+            "surname": "Doee",
+            "gender": "Male",
+            "phone": "05455555555",
+            "email": "deneme@deneme.com",
+            "id": 1,
+            "readed": false,
+            "kres": "Giresun Kreşi",
+            "packet": "Starter pack",
+            "date": "2023-10-30T13:34:50.498Z"
+        }, {
+            "name": "Joee",
+            "surname": "Doee",
+            "gender": "Male",
+            "phone": "05455555555",
+            "email": "deneme@deneme.com",
+            "id": 2,
+            "readed": false,
+            "kres": "Giresun Kreşi",
+            "packet": "Starter pack",
+            "date": "2023-10-30T13:34:50.498Z"
+        }, {
+            "name": "Joee",
+            "surname": "Doee",
+            "gender": "Female",
+            "phone": "05455555555",
+            "email": "deneme@deneme.com",
+            "id": 3,
+            "readed": false,
+            "kres": "Giresun Kreşi",
+            "packet": "Starter pack",
+            "date": "2023-10-30T13:34:50.498Z"
+        }, {
+            "name": "Joee",
+            "surname": "Doee",
+            "gender": "Male",
+            "phone": "05455555555",
+            "email": "deneme@deneme.com",
+            "id": 4,
+            "readed": false,
+            "kres": "Giresun Kreşi",
+            "packet": "Starter pack",
+            "date": "2023-10-30T13:34:50.498Z"
+        }, {
+            "name": "Joee",
+            "surname": "Doee",
+            "gender": "Male",
+            "phone": "05455555555",
+            "email": "deneme@deneme.com",
+            "id": 5,
+            "readed": true,
+            "kres": "Giresun Kreşi",
+            "packet": "Starter pack",
+            "date": "2023-10-30T13:34:50.498Z"
+        }, {
+            "name": "Joee",
+            "surname": "Doee",
+            "gender": "Female",
+            "phone": "05455555555",
+            "email": "deneme@deneme.com",
+            "id": 6,
+            "readed": true,
+            "kres": "Giresun Kreşi",
+            "packet": "Starter pack",
+            "date": "2023-10-30T13:34:50.498Z"
+        }]
+    },
 
     "getPackets": {  
         "success": 1,

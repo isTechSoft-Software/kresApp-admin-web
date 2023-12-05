@@ -16,7 +16,7 @@ function PaymentChartWeekly({paymentArray}) {
           data: paymentArray,
         },
       ]}
-      width={450}
+      width={window.innerWidth > 600 ? 450 : 350}
       height={300}
     />
   );

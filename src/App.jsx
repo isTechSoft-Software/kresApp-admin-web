@@ -17,6 +17,7 @@ import LoginPage from './AdminPage/pages/LoginPage/LoginPage'
 import { useSelector } from 'react-redux'
 import Profile from './AdminPage/pages/Profile/Profile'
 import Classes from './AdminPage/pages/Classes/Classes'
+import LastBoughtNotificationsPage from './AdminPage/pages/LastBoughtNotificationsPage/LastBoughtNotificationsPage'
 
 function App() {
   const {login} = useSelector(state => state.login);
@@ -25,8 +26,8 @@ function App() {
     <div>
       <div className="minh100" style={{ backgroundColor: colors.background.default }}>
         <div className="row" style={{ backgroundColor: colors.background.default }}>
-          {login && <div  className='col-2'><LeftSection /></div>}
-          <div className={login ? 'col-10' : 'col-12'}> {/* LeftSection'u gösterme durumuna göre sınıfı değiştir */}
+          {login && <div  className='col-lg-2 col-12'><LeftSection /></div>}
+          <div className={login ? 'col-lg-10 col-12' : 'col-12'}> {/* LeftSection'u gösterme durumuna göre sınıfı değiştir */}
             <Routes>
               <Route path="/anasayfa" element={!login ? <LoginPage/> :<AdminPanelDashboard />}></Route>
               <Route path="/duyuru/sms" element={!login ? <LoginPage/> :<Sms />}></Route>
@@ -35,6 +36,7 @@ function App() {
               <Route path="/okullar" element={!login ? <LoginPage/> :<Schools />}></Route>
               <Route path="/kullanicilar" element={!login ? <LoginPage/> :<Users />}></Route>
               <Route path="/paketler" element={!login ? <LoginPage/> :<Packet />}></Route>
+              <Route path="/sonsatinalanlar" element={!login ? <LoginPage/> :<LastBoughtNotificationsPage />}></Route>
               <Route path="/paketler/olustur" element={!login ? <LoginPage/> :<CreatePacket />}></Route>
               <Route path="/okullar/olustur" element={!login ? <LoginPage/> :<CreateSchool />}></Route>
               <Route path="/okullar/:id" element={!login ? <LoginPage/> :<DetailsSchool />}></Route>

@@ -1,7 +1,7 @@
 .listschools{
   width: 100%;
   padding: 2rem !important;
-  height: calc(100vh - 4rem);
+  height: calc(100vh - 6rem);
   background-color: white;
   border: none;
   border-radius: 20px;

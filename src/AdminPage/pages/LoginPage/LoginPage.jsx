@@ -32,9 +32,9 @@ function LoginPage() {
 
     return (
         <div className="minh100 d-flex justify-content-center align-items-center">
-            <div className="w-75 h-75  d-flex logingeneldiv">
-
-                <div className="w-50 d-flex flex-column justify-content-center align-items-center">
+            <div className=" h-75 col-lg-9 col-12  d-flex logingeneldiv">
+                
+                <div className="d-flex col-12 col-lg-5 flex-column justify-content-center align-items-center">
 
                     <h4 className="text-center"><ChildCareIcon style={{fontSize: "50px", color: colors.text.focus}} className="textcolor"></ChildCareIcon></h4>
                     <h4 className="text-center " style={{color: colors.text.focus}}>Kreş APP Admin Giriş</h4>
@@ -56,7 +56,7 @@ function LoginPage() {
                     <button className="buttonlogin" onClick={handleLogin}>Giriş Yap</button>
 
                 </div>
-                <div className="imagediv w-75 d-flex justify-content-center align-items-center">
+                <div className="imagediv col-lg-7 col-0 d-flex justify-content-center align-items-center">
                 </div>
             </div>
         </div>

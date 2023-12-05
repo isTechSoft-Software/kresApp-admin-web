@@ -1,32 +1,34 @@
-.users{
-    height: 100vh;
+.users {
+    height: 90vh;
 }
 
-.userlists{
+.userlists {
     background-color: white;
     border-radius: 20px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
 
 
-.aramausers{
+.aramausers {
     border: none;
     outline: none;
     margin: 0.5rem !important;
+    width: 80% !important;
 }
 
 
-.aramadiv{
+
+.aramadiv {
     border-radius: 10px;
     padding-left: 0.3rem !important;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
     width: 25%;
 }
 
-.tabbutton{
-    padding: 0.5rem!important;
+.tabbutton {
+    padding: 0.5rem !important;
     width: 100%;
-    
+
     color: white;
     font-weight: bold;
     background-color: #2196F3;
@@ -35,30 +37,49 @@
     margin-top: 1rem !important;
 }
 
-.basilibutton{
+.basilibutton {
     background-color: rgb(14, 60, 97);
 
 }
 
 
 
-.eachh{
+.eachh {
     min-height: 50px;
     margin-top: 0.5rem !important;
     margin-bottom: 0.5rem !important;
     border-radius: 20px;
     box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }
+@media screen and (max-width: 768px) {
+    .listust{
+        width: 800px;
+    }
+    .aramausers {
+        width: 60% !important;
+    }
+    .eachh{
+        width: 100%;
+    }
+    .ustlistt{
+        width: 1000px;
+    }
+    .listt{
+        width: 800px;
+    }
+}
 
-.collar{
+
+
+.collar {
     align-self: center;
 }
 
 
-.listt{
-    overflow: auto;
+.listt {
     height: 70vh;
 }
-.listtt{
+
+.listtt {
     height: 75vh;
 }

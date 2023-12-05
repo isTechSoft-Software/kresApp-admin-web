@@ -12,9 +12,6 @@ function Herkes({item}) {
         <div className="row eachh m-2">
 
         <div className="col-1 text-center collar" style={{ color: colors.text.main }}>
-            <img src={item.gender == "Male" ? male : female} style={{ height: "36px" }} alt="" />
-        </div>
-        <div className="col-1 text-center collar" style={{ color: colors.text.main }}>
             {item.id}
         </div>
         <div className="col-2 text-center collar" style={{ color: colors.text.main }}>

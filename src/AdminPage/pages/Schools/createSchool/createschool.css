@@ -1,6 +1,5 @@
 .createschooldiv{
     min-height: 100vh;
-    padding: 3rem !important;
 }
 
 .altcrt{
@@ -8,7 +7,6 @@
     border-radius: 20px;
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
     padding: 2rem !important;
-    width: 70%;
     min-height: 80vh;
 }
 

@@ -1,0 +1,26 @@
+.lbdiv{
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+    height: 85vh;
+    margin: 1rem 3rem 1rem 3rem !important;
+    padding: 1rem !important;
+    overflow-y: auto;
+}
+
+.notiflistt{
+    padding: 0.6rem !important;
+    border-radius: 20px;
+    margin-top: 0.3rem !important;
+}
+
+
+@media screen and (max-width: 768px) {
+    .lbdiv{
+        height: 60vh;
+        margin: 1rem !important;
+    }
+    .notiflistt{
+        width: 1000px;
+    }
+}

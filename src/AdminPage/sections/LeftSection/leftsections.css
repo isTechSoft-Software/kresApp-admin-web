@@ -7,6 +7,18 @@
     margin-top: calc(100% - 50%) !important;
 }
 
+@media screen and (max-width: 768px) {
+    
+    .accessdiv{
+        margin-top: 2rem !important;
+        width: 70%;
+    }
+    .open{
+        background-color: initial !important;
+    }
+    
+}
+
 .ullleft li {
     font-size: 16px !important;
     margin-top: 0.8rem !important;
@@ -94,7 +106,6 @@
     top: 0;
     left: 0;
     z-index: 999;
-    min-height: 100vh;
 }
 
 
@@ -112,3 +123,15 @@
         margin-left: 0.5rem !important; 
     }
 } */
+
+
+.badgee{
+    border-radius: 10px;
+    background-color: #67748e;
+    padding: 4px 6px !important;
+    color: white;
+    height: 25px;
+    font-weight: bold;
+
+    
+}

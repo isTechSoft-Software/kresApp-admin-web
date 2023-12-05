@@ -12,7 +12,9 @@ const initialState = {
   ownerCount: 0,
   teacherCount: 0,
   kresCount: 0,
-  studentCount: 0
+  studentCount: 0,
+  lastBought: [],
+  lastBoughtLoading: true
 
 }
 
@@ -123,6 +125,20 @@ export const getKresCount = createAsyncThunk('getKresCount', async () => {
     throw error;
   }
 });
+export const getLastBought = createAsyncThunk('getLastBought', async () => {
+  try {
+
+    const res = await fetch(ip +"lastBought/",)
+    const data = await res.json();
+
+    return data
+  } catch (error) {
+    console.log(error);
+
+    throw error;
+  }
+});
+
 
 
 
@@ -135,7 +151,6 @@ export const gainsSlice = createSlice({
   extraReducers: (builder) => {
 
     builder.addCase(getGains.fulfilled, (state, action) => {
-      console.log(action);
 
       if (action.payload.success) {
         state.gainsLoading = false
@@ -210,6 +225,17 @@ export const gainsSlice = createSlice({
       if (action.payload.success) {
         state.gainsLoading = false
         state.studentCount = action.payload.data
+      }
+
+
+
+    });
+    builder.addCase(getLastBought.fulfilled, (state, action) => {
+
+      if (action.payload.success) {
+        state.lastBoughtLoading= false
+        state.gainsLoading = false
+        state.lastBought = action.payload.data
       }
 
 

@@ -61,7 +61,7 @@ function DetailsSchool() {
                         </div>
 
                         <div className="d-flex justify-content-center h-75">
-                            <div className="col-6 d-flex justify-content-around h-100">
+                            <div className="col-6 d-flex justify-content-around h-100 flex-wrap">
 
                                 <div className="d-flex flex-column justify-content-around">
                                     <div className="schooldetailsbox" onClick={() => navigate("/siniflar/" + school?.id, {
@@ -86,32 +86,21 @@ function DetailsSchool() {
                     </div>
                     <div className="h50">
                         <div className="h-100 d-flex justify-content-center align-items-center">
-                            <div className="paymentSec d-flex flex-column">
+                            <div className="paymentSec col-lg-8 col-11 d-flex flex-column">
                                 <div style={{ color: colors.text.focus }} className="border-bottom p-3 d-flex  justify-content-center align-items-center">
                                     <CreditCardIcon className="mx-2"></CreditCardIcon> Ödeme Bilgileri
                                 </div>
                                 <div className="d-flex h-100">
                                     <div className="col-6 altsectionbox p-3">
                                         <h5 style={{ color: colors.text.focus }} className="pb-2">Son Ödemeler</h5>
-                                        <div className="mb-2 w-100 p-2 paid d-flex justify-content-around align-items-center">
+                                        <div className="mb-2 w-100 p-2 paid d-flex justify-content-around align-items-center overflow-auto">
                                             <div style={{ color: colors.text.focus }} >
                                                 <CreditCardIcon style={{ color: colors.text.focus }}></CreditCardIcon>
                                             </div>
-                                            <div style={{ color: colors.text.focus }} >
+                                            <div  className="mbbild" style={{ color: colors.text.focus }} >
                                                 {Date.now()}
                                             </div>
-                                            <div style={{ color: colors.text.focus }} >
-                                                5000TL
-                                            </div>
-                                        </div>
-                                        <div className="mb-2 w-100 p-2 paid d-flex justify-content-around align-items-center">
-                                            <div style={{ color: colors.text.focus }} >
-                                                <CreditCardIcon style={{ color: colors.text.focus }}></CreditCardIcon>
-                                            </div>
-                                            <div style={{ color: colors.text.focus }} >
-                                                {Date.now()}
-                                            </div>
-                                            <div style={{ color: colors.text.focus }} >
+                                            <div  className="mbbild" style={{ color: colors.text.focus }} >
                                                 5000TL
                                             </div>
                                         </div>
@@ -119,7 +108,7 @@ function DetailsSchool() {
                                     <div className="col-6 altsectionbox border-start d-flex justify-content-center align-items-center">
                                         <div className="creditcart d-flex flex-column  align-items-center border w-75 h-75">
                                             <CreditCardIcon style={{ fontSize: "5rem", color: colors.text.focus }}></CreditCardIcon>
-                                            <div className="d-flex flex-column" style={{ color: colors.text.focus }}>
+                                            <div className="d-flex flex-column overflow-auto" style={{ color: colors.text.focus }}>
                                                 <p>
 
                                                     6 Aydır KresApp Kullanıyor
