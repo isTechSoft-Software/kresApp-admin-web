@@ -10,7 +10,6 @@ import Profile from "../../Profile/Profile";
 function DetailsSchool() {
 
     const { id } = useParams()
-    console.log(id);
     const ip = import.meta.env.VITE_IP;
 
     const navigate = useNavigate();
@@ -32,7 +31,7 @@ function DetailsSchool() {
     const getSchoolDetail = async (action) => {
         try {
 
-            const res = await fetch(ip + "schools" + action,)
+            const res = await fetch(ip + "schools" +"21" ,)// action,)
             const data = await res.json();
 
             setSchool(data.data)
@@ -93,15 +92,15 @@ function DetailsSchool() {
                                 <div className="d-flex h-100">
                                     <div className="col-6 altsectionbox p-3">
                                         <h5 style={{ color: colors.text.focus }} className="pb-2">Son Ödemeler</h5>
-                                        <div className="mb-2 w-100 p-2 paid d-flex justify-content-around align-items-center overflow-auto">
-                                            <div style={{ color: colors.text.focus }} >
+                                        <div className="mb-2 p-2 paid overflow-auto">
+                                            <div className="eachelementpaid" style={{ color: colors.text.focus }} >
                                                 <CreditCardIcon style={{ color: colors.text.focus }}></CreditCardIcon>
                                             </div>
-                                            <div  className="mbbild" style={{ color: colors.text.focus }} >
-                                                {Date.now()}
-                                            </div>
-                                            <div  className="mbbild" style={{ color: colors.text.focus }} >
+                                            <div  className="eachelementpaid" style={{ color: colors.text.focus }} >
                                                 5000TL
+                                            </div>
+                                            <div style={{ color: colors.text.focus }} >
+                                                18/06/2023
                                             </div>
                                         </div>
                                     </div>

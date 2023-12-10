@@ -2,26 +2,61 @@
 import { siniflarornek } from "../../Ornekler";
 import { colors } from "../../color";
 import "./classes.css"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import StudentsMenu from "./StudentsMenu";
-import { useLocation } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import EachClass from "./EachClass";
 
 function Classes() {
 
-    const [openingMenuIndex, setOpeningMenuIndex] = useState(0)
-    const location = useLocation();
-    let data = location.state.data;
 
-    console.log(data);
+    const {id} = useParams()
 
+    const [school, setSchool] = useState();
+    const [classes, setClasses] = useState();
+
+    const [studentCount, setStudentCount] = useState(0);
+    const [teacherCount, setTeacherCount] = useState(0);
     
 
+    
+    
+
+    const ip = import.meta.env.VITE_IP;
+
+    const fetchDatas = async () => {
+        const res = await fetch(ip+"admin/get-school-detail/" + id)
+        const data = await res.json();
+        setSchool(data.data)
+        const res2 = await fetch(ip+"admin/list-classes/" + id)
+        const data2 = await res2.json();
+        setClasses(data2.data)
+
+        classes?.forEach(async (element ) => {
+            const res = await fetch( ip + "admin/list-students/" + element.id )
+            const data = await res.json();
+            element.students = data.data
+            setStudentCount(studentCount + element.students.length)
+            setTeacherCount(teacherCount + element.ClassTeachers.length)
+        })
+
+
+
+    }
+
+    useEffect(() => {
+        fetchDatas();
+        
+    },[])
+
+    
+    const [profileStudents, setprofileStudents] = useState([]);
+    
 
     const [open, setOpen] = useState(false);
 
-    const handleClickOpen = (index) => {
-        setOpeningMenuIndex(index)
+    const handleClickOpen = (profileStudentss) => {
+        setprofileStudents(profileStudentss)
         setOpen(true);
     };
 
@@ -33,7 +68,7 @@ function Classes() {
             <div className="classesust border-bottom p-4">
                 <div className="d-flex h-100 w-100 justify-content-center align-items-center">
                     <div>
-                        <h2 className="text-center mb-2" style={{ color: colors.text.main }}>{data?.schoolName}(#{data?.id})</h2>
+                        <h2 className="text-center mb-2" style={{ color: colors.text.main }}>{school?.schoolName}(#{school?.id})</h2>
                         <div className="d-flex">
 
                             <div>
@@ -42,13 +77,13 @@ function Classes() {
                             <div className="d-flex flex-column justify-content-center mx-5">
                                 <p className="fw-bold" style={{ color: colors.text.main }}>
 
-                                    Sınıf Sayısı: {data?.classes.length}
+                                    Sınıf Sayısı: {classes?.length || 0}
                                 </p>
                                 <p className="fw-bold" style={{ color: colors.text.main }}>
-                                    Öğrenci Sayısı: {data?.studentCount}
+                                    Öğrenci Sayısı: {studentCount}
                                 </p>
                                 <p className="fw-bold" style={{ color: colors.text.main }}>
-                                    Öğretmen Sayısı: {data?.teacherCount}
+                                    Öğretmen Sayısı: {teacherCount}
                                 </p>
 
                             </div>
@@ -61,17 +96,17 @@ function Classes() {
             </div>
             <div className="classesalt p-3">
                 <div className="d-flex flex-wrap">
-                    {data?.classes.map((element, index) => {
+                    {classes?.map((element, index) => {
 
                         return (
-                            <EachClass handleClickOpen={handleClickOpen} key={element.id} element={element} index={index}> </EachClass>
+                            <EachClass  handleClickOpen={handleClickOpen} key={element.id} element={element} index={index}> </EachClass>
                             )
                     })}
 
                 </div>
             </div>
 
-            <StudentsMenu open={open} students={data?.classes[openingMenuIndex].students} handleClose={handleClose}></StudentsMenu>
+            <StudentsMenu open={open} students={profileStudents} handleClose={handleClose}></StudentsMenu>
         </div>
     );
 }

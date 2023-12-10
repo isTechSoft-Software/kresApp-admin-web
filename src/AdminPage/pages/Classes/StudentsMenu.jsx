@@ -10,7 +10,7 @@ import Profile from "../Profile/Profile";
 import { useState } from "react";
 function StudentsMenu({ open, handleClose, students }) {
 
-    const [sentToProfileID , setSentToProfileID] = useState();
+    const [sentToProfileID, setSentToProfileID] = useState();
 
     const [open2, setOpen2] = useState(false);
 
@@ -32,28 +32,19 @@ function StudentsMenu({ open, handleClose, students }) {
                 <div className="studentlist p-2 " style={{ width: "32rem", height: "25em" }}>
                     {!(students?.length > 0) ? <div>Sınıfta öğrenci yok</div> :
 
-                        students.map((element) => {
+                        students?.map((element) => {
                             return (
 
-                                <div className="listttt d-flex justify-content-around p-1 mt-2 align-items-center" key={element.id}>
+                                <div className="listttt d-flex justify-content-around p-2 mt-2 align-items-center" key={element.id}>
                                     <div>
-                                        <img src={element.gender == "Male" ? male : female} style={{ height: "36px" }} alt="" />
-                                    </div>
-                                    <div>
-                                        {element.name}
+                                        {element?.studentTCNo}
                                     </div>
                                     <div>
-                                        {element.phone}
+                                        {element?.studentName} {element?.studentSurname}
                                     </div>
-                                    <div className="d-flex justify-content-around">
-                                        <div className="cursorpointer" onClick={() => {handleClickOpen2(element.id)} } style={{ color: colors.info.main }}>
-                                            <EditNoteIcon></EditNoteIcon>
-                                        </div>
-                                        <div className="cursorpointer" style={{ color: colors.error.main }}>
-                                            <DeleteForeverIcon></DeleteForeverIcon>
-                                        </div>
+                                    <div>
+                                        {element?.StudentParents?.length > 0 &&  element?.StudentParents[0]?.parent?.parentUsername}
                                     </div>
-
                                 </div>)
                         })
 
@@ -63,7 +54,7 @@ function StudentsMenu({ open, handleClose, students }) {
 
                 </div>
             </div>
-            
+
             <Profile open={open2} onClose={handleClose2} role={"ogrenci"} id={sentToProfileID}></Profile>
         </Dialog>
 

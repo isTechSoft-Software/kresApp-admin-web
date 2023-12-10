@@ -179,25 +179,25 @@ function QuickAccess() {
                         </div>
                         <div className={`accordion-content ${isActive4 ? 'open' : ''}`}>
 
-                            <div className="d-flex align-items-center marginleft-1 cursorpointer" onClick={() => navigate("/duyuru/sms")}>
+                            {/* <div className="d-flex align-items-center marginleft-1 cursorpointer" onClick={() => navigate("/duyuru/sms")}>
                                 <div className="d-flex p-1 iconss" style={{ backgroundColor: "white" }}>
 
                                     <MessageIcon style={{ color: "#3A416F" }}></MessageIcon>
                                 </div>
                                 <p style={{ color: colors.text.main }}>SMS Gönder</p>
-                            </div>
+                            </div> */}
                             <div className="d-flex align-items-center marginleft-1 cursorpointer" onClick={() => navigate("/duyuru/bildirim")}>
                                 <div className="d-flex p-1 iconss" style={{ backgroundColor: "white" }}>
                                     <NotificationsIcon style={{ color: "#3A416F" }}></NotificationsIcon>
                                 </div>
                                 <p style={{ color: colors.text.main }}>Bildirim Gönder</p>
                             </div>
-                            <div className="d-flex align-items-center marginleft-1 mb-1 cursorpointer" onClick={() => navigate("/duyuru/mail")}>
+                            {/* <div className="d-flex align-items-center marginleft-1 mb-1 cursorpointer" onClick={() => navigate("/duyuru/mail")}>
                                 <div className="d-flex p-1 iconss" style={{ backgroundColor: "white" }}>
                                     <EmailIcon style={{ color: "#3A416F" }}></EmailIcon>
                                 </div>
                                 <p style={{ color: colors.text.main }}>Email Gönder</p>
-                            </div>
+                            </div> */}
                         </div>
                     </div>
                 </li>

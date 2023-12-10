@@ -11,7 +11,7 @@ import PaymentChart from "./PaymentChart";
 import PaymentChartWeekly from "./PaymentChartWeekly";
 import Box from "./Box";
 import { useDispatch, useSelector } from "react-redux";
-import { getGains, getGainsThisYear, getGainsWeekly, getKresCount, getLastBought, getOpenedKresThisYear, getOwnerCount, getStudentCount, getTeacherCount } from "../../../redux/features/dashboardStates/dashboardStates";
+import { getGains, getGainsThisYear, getGainsWeekly, getLastBought, getOpenedKresThisYear, getStatistic } from "../../../redux/features/dashboardStates/dashboardStates";
 import LastBought from "./LastBought";
 function AdminPanelDashboard() {
 
@@ -20,7 +20,7 @@ function AdminPanelDashboard() {
 
 
 
-    const { gains,gainsLoading,gainsweekly,lastBoughtLoading, lastBought , gainsthisyear , openedKresThisYear , ownerCount , teacherCount, studentCount,kresCount} = useSelector(state => state.gains)
+    const { gains,gainsweekly,lastBoughtLoading, lastBought , gainsthisyear , openedKresThisYear , ownerCount , teacherCount, studentCount,kresCount} = useSelector(state => state.gains)
     const dispatch = useDispatch();
 
     useEffect(() => {
@@ -29,10 +29,7 @@ function AdminPanelDashboard() {
        dispatch(getGainsWeekly()) 
        dispatch(getGainsThisYear()) 
        dispatch(getOpenedKresThisYear())
-       dispatch(getStudentCount())
-       dispatch(getOwnerCount())
-       dispatch(getTeacherCount())
-       dispatch(getKresCount())
+       dispatch(getStatistic())
     },[])
 
 

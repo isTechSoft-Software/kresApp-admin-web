@@ -26,7 +26,6 @@ function Packet() {
         getPackets();
     }, [])
 
-    console.log(packets);
     return (
         <div>
             <div className="pt-3 mx-3" style={{ color: colors.text.focus }}>

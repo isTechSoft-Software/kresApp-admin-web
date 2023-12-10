@@ -5,15 +5,15 @@ const ip = import.meta.env.VITE_IP;
 
 const initialState = {
   schools: [],
-  
+  page: 1,
+  hasMore: true,
   schoolsLoading: true,
 
 }
 
-export const getSchools = createAsyncThunk('getSchools', async () => {
+export const getSchools = createAsyncThunk('getSchools', async (page) => {
   try {
-
-    const res = await fetch(ip +"schools/",)
+    const res = await fetch(ip +"schools" + page,)
     const data = await res.json();
 
     return data
@@ -27,10 +27,14 @@ export const getSchools = createAsyncThunk('getSchools', async () => {
 
 
 
+
 export const schoolsSlice = createSlice({
   name: 'schools',
   initialState,
   reducers: {
+    incPage: (state) => {
+      state.page += 1
+    },
 
   },//builder
   extraReducers: (builder) => {
@@ -39,7 +43,10 @@ export const schoolsSlice = createSlice({
 
       if (action.payload.success) {
         state.schoolsLoading = false
-        state.schools = action.payload.data
+        state.schools.push(...action.payload.data[0].data)
+        state.page +=1 ;
+      }else{
+        state.hasMore = false
       }
 
 
@@ -49,6 +56,6 @@ export const schoolsSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-// export const { } = schoolsSlice.actions
+// export const {incPage } = schoolsSlice.actions
 
 export default schoolsSlice.reducer

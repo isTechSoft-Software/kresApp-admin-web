@@ -8,7 +8,7 @@ export default defineConfig({
     exclude: ['mui/x-charts']
   },
   server: {
-    host: '192.168.1.184'
+    host: '192.168.1.185'
   }
 
 })

@@ -27,39 +27,26 @@ function EachClass({ element, index, handleClickOpen }) {
 
 
 
-    return (<div className="siniflarbox cursorpointer" key={element.id}>
-        <div onClick={() => handleClickOpen(index)} className="siniflarboximage text-center">
+    return (
+    <div className="siniflarbox cursorpointer" key={element.id}>
+        <div onClick={() => handleClickOpen(element?.students)} className="siniflarboximage text-center">
             <SchoolIcon sx={{ width: "100%", height: "100%", color: colors.text.main }}></SchoolIcon>
 
         </div>
         <div className="siniflarboxbody text-center d-flex flex-column justify-content-around">
             <div onClick={() => handleClickOpen(index)}>
 
-                <p className="fw-bold" style={{ color: colors.text.main }}>{element.name}</p>
-                <p><Face2Icon sx={{ color: colors.text.main }}></Face2Icon> {element.teacherName}</p>
+                <p className="fw-bold" style={{ color: colors.text.main }}>{element?.className} #({element?.id})</p>
+                <p><Face2Icon sx={{ color: colors.text.main }}></Face2Icon> {element?.classTeachers?.length > 0 && element?.classTeachers[0]?.Teacher?.teacherName} {element?.classTeachers?.length > 0 && element?.classTeachers[0]?.Teacher?.teacherSurname}</p>
                 <div className="d-flex justify-content-center">
 
-                    <p className="fw-bold" style={{ color: colors.text.main }}>Kapasite: </p><p> {element.capacity}</p>
+                    <p className="fw-bold" style={{ color: colors.text.main }}>Kapasite: </p><p> {element?.classStudentNum}</p>
                 </div>
                 <div className="d-flex justify-content-center">
 
-                    <p className="fw-bold" style={{ color: colors.text.main }}>Öğrenci Sayısı: </p><p> {element.studentCount}</p>
+                    <p className="fw-bold" style={{ color: colors.text.main }}>Öğrenci Sayısı: </p><p> {element?.students?.length || 0 }</p>
                 </div>
 
-            </div>
-            <div className="align-self-end">
-
-                <div className="d-flex justify-content-end mb-1">
-                    <div className={(element != changed) ? "cursorpointer d-block" : "d-none cursorpointer"} style={{ color: colors.warning.main }}>
-                        <SaveIcon></SaveIcon>
-                    </div>
-                    <div className="cursorpointer" onClick={() => setEditMode(!editMode)} style={{ color: colors.info.main }}>
-                        <EditNoteIcon></EditNoteIcon>
-                    </div>
-                    <div className="cursorpointer" style={{ color: colors.error.main }}>
-                        <DeleteForeverIcon></DeleteForeverIcon>
-                    </div>
-                </div>
             </div>
 
 

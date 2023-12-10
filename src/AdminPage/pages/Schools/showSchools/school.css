@@ -1,7 +1,5 @@
 .listschools{
-  width: 100%;
-  padding: 2rem !important;
-  height: calc(100vh - 6rem);
+  height: calc(100vh - 8rem);
   background-color: white;
   border: none;
   border-radius: 20px;
@@ -14,7 +12,27 @@
 
 .eachscool{
   box-shadow: 1px 1px 5px rgba(0,0,0,0.2);
-  padding: 0.6rem !important;
+  padding: 0.6rem 0 !important;
   border-radius: 20px;
 
+}
+
+.overff{
+  height: 15%;
+}
+.overfff{
+  overflow: auto;
+  height: 80%;
+}
+
+
+
+@media screen and (max-width: 768px) {
+  .mblistsc{
+    width: 850px;
+  }
+
+  .overfff{
+    width: 850px;
+  }
 }

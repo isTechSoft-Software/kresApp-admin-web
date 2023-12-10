@@ -5,9 +5,9 @@ const ip = import.meta.env.VITE_IP;
 
 const initialState = {
   gains: {},
-  gainsweekly: [0,0,0,0,0,0,0],
-  gainsthisyear: [0,0,0,0,0,0,0,0,0,0,0,0],
-  openedKresThisYear: [0,0,0,0,0,0,0,0,0,0,0,0],
+  gainsweekly: [0, 0, 0, 0, 0, 0, 0],
+  gainsthisyear: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+  openedKresThisYear: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
   gainsLoading: true,
   ownerCount: 0,
   teacherCount: 0,
@@ -15,55 +15,187 @@ const initialState = {
   studentCount: 0,
   lastBought: [],
   lastBoughtLoading: true
-
 }
 
 export const getGains = createAsyncThunk('getGains', async () => {
   try {
+    const today = new Date();
+    const last7DaysDate = new Date(today);
+    last7DaysDate.setDate(today.getDate() - 7);
+    const last30DaysDate = new Date(today);
+    last30DaysDate.setDate(today.getDate() - 30);
 
-    const res = await fetch(ip +"gains/",)
+    const formattedToday = today.toISOString().split('T')[0];
+    const last6MonthsDate = new Date(today);
+    last6MonthsDate.setMonth(today.getMonth() - 6);
+
+    const formattedLast7Days = last7DaysDate.toISOString().split('T')[0];
+    const formattedLast30Days = last30DaysDate.toISOString().split('T')[0];
+    const formattedLast6Months = last6MonthsDate.toISOString().split('T')[0];
+
+    const last6months = {
+      "firstDate": formattedLast6Months,
+      "secondDate": formattedToday
+    };
+
+
+    const last30days = {
+      "firstDate": formattedLast30Days,
+      "secondDate": formattedToday
+    };
+
+    const last7days = {
+      "firstDate": formattedLast7Days,
+      "secondDate": formattedToday
+    };
+    const allTime = {
+      "firstDate": "2020-3-20",
+      "secondDate": "2050-12-23"
+    };
+
+    const res = await fetch(ip + "admin/get-progress-payment/", {
+      method: "POST",
+      body: JSON.stringify(last7days)
+    })
+    const res2 = await fetch(ip + "admin/get-progress-payment/", {
+      method: "POST",
+      body: JSON.stringify(last30days)
+    })
+    const res3 = await fetch(ip + "admin/get-progress-payment/", {
+      method: "POST",
+      body: JSON.stringify(last6months)
+    })
+    const res4 = await fetch(ip + "admin/get-progress-payment/", {
+      method: "POST",
+      body: JSON.stringify(allTime)
+    })
+
     const data = await res.json();
+    const data2 = await res2.json();
+    const data3 = await res3.json();
+    const data4 = await res4.json();
 
-    return data
+
+    const values = {
+      "success": 1,
+      "data": {
+        "last7days": data.data[0],
+        "last30days": data2.data[0],
+        "last6months": data3.data[0],
+        "totalGained": data4.data[0],
+      }
+    }
+
+
+
+    return values
   } catch (error) {
     console.log(error);
 
     throw error;
   }
 });
+
+
+
+
+
 export const getGainsWeekly = createAsyncThunk('getGainsWeekly', async () => {
-  try {
+  // try {
 
-    const res = await fetch(ip +"gainsweekly/",)
-    const data = await res.json();
+  //   const today = new Date();
+  //   const last7DaysDate = new Date(today);
+  //   last7DaysDate.setDate(today.getDate() - 7);
 
-    return data
-  } catch (error) {
-    console.log(error);
 
-    throw error;
-  }
+
+  //   const res = await fetch(ip + "admin/get-progress-payment/", {
+  //     method: "POST",
+  //     body: JSON.stringify(last7days)
+  //   })
+
+
+  //   const data = await res.json();
+
+  //   return data
+  // } catch (error) {
+  //   console.log(error);
+
+  //   throw error;
+  // }
 });
+
+
+
+
+
 export const getGainsThisYear = createAsyncThunk('getGainsThisYear', async () => {
-  try {
+  // try {
 
-    const res = await fetch(ip +"gainsthisyear/",)
-    const data = await res.json();
+  //   const res = await fetch(ip + "gainsthisyear/",)
+  //   const data = await res.json();
 
-    return data
-  } catch (error) {
-    console.log(error);
+  //   return data
+  // } catch (error) {
+  //   console.log(error);
 
-    throw error;
-  }
+  //   throw error;
+  // }
 });
+
+
+
+
 export const getOpenedKresThisYear = createAsyncThunk('getOpenedKresThisYear', async () => {
   try {
 
-    const res = await fetch(ip +"openedkresthisyear/",)
+    const res = await fetch(ip + "admin/get-opened-schools/",)
     const data = await res.json();
 
-    return data
+    const lastYearCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+
+
+    data.data[0].map((element) => {
+      if (element.month.slice(-2) == "-1") {
+        lastYearCounts[0] = parseInt(element.count)
+      }
+      if (element.month.slice(-2) == "-2") {
+        lastYearCounts[1] = parseInt(element.count)
+      }
+      if (element.month.slice(-2) == "-3") {
+        lastYearCounts[2] = parseInt(element.count)
+      }
+      if (element.month.slice(-2) == "-4") {
+        lastYearCounts[3] = parseInt(element.count)
+      }
+      if (element.month.slice(-2) == "-5") {
+        lastYearCounts[4] = parseInt(element.count)
+      }
+      if (element.month.slice(-2) == "-6") {
+        lastYearCounts[5] = parseInt(element.count)
+      }
+      if (element.month.slice(-2) == "-7") {
+        lastYearCounts[6] = parseInt(element.count)
+      }
+      if (element.month.slice(-2) == "-8") {
+        lastYearCounts[7] = parseInt(element.count)
+      }
+      if (element.month.slice(-2) == "-9") {
+        lastYearCounts[8] = parseInt(element.count)
+      }
+      if (element.month.slice(-2) == "10") {
+        lastYearCounts[9] = parseInt(element.count)
+      }
+      if (element.month.slice(-2) == "11") {
+        lastYearCounts[10] = parseInt(element.count)
+      }
+      if (element.month.slice(-2) == "12") {
+        lastYearCounts[11] = parseInt(element.count)
+      }
+
+    })
+
+    return lastYearCounts
   } catch (error) {
     console.log(error);
 
@@ -73,10 +205,10 @@ export const getOpenedKresThisYear = createAsyncThunk('getOpenedKresThisYear', a
 
 
 
-export const getOwnerCount = createAsyncThunk('getOwnerCount', async () => {
+export const getStatistic = createAsyncThunk('getStatistic', async () => {
   try {
 
-    const res = await fetch(ip +"ownercount/",)
+    const res = await fetch(ip + "admin/get-statistic/",)
     const data = await res.json();
 
     return data
@@ -86,49 +218,14 @@ export const getOwnerCount = createAsyncThunk('getOwnerCount', async () => {
     throw error;
   }
 });
-export const getTeacherCount = createAsyncThunk('getTeacherCount', async () => {
-  try {
 
-    const res = await fetch(ip +"Teachercount/",)
-    const data = await res.json();
 
-    return data
-  } catch (error) {
-    console.log(error);
 
-    throw error;
-  }
-});
-export const getStudentCount = createAsyncThunk('getStudentCount', async () => {
-  try {
 
-    const res = await fetch(ip +"Studentcount/",)
-    const data = await res.json();
-
-    return data
-  } catch (error) {
-    console.log(error);
-
-    throw error;
-  }
-});
-export const getKresCount = createAsyncThunk('getKresCount', async () => {
-  try {
-
-    const res = await fetch(ip +"Krescount/",)
-    const data = await res.json();
-
-    return data
-  } catch (error) {
-    console.log(error);
-
-    throw error;
-  }
-});
 export const getLastBought = createAsyncThunk('getLastBought', async () => {
   try {
 
-    const res = await fetch(ip +"lastBought/",)
+    const res = await fetch(ip + "admin/list-purchases/",)
     const data = await res.json();
 
     return data
@@ -172,10 +269,7 @@ export const gainsSlice = createSlice({
     });
     builder.addCase(getOpenedKresThisYear.fulfilled, (state, action) => {
 
-      if (action.payload.success) {
-        state.gainsLoading = false
-        state.openedKresThisYear = action.payload.data
-      }
+      state.openedKresThisYear = action.payload
 
 
 
@@ -190,41 +284,14 @@ export const gainsSlice = createSlice({
 
 
     });
-    builder.addCase(getOwnerCount.fulfilled, (state, action) => {
+
+    builder.addCase(getStatistic.fulfilled, (state, action) => {
 
       if (action.payload.success) {
-        state.gainsLoading = false
-        state.ownerCount = action.payload.data
-      }
-
-
-
-    });
-    builder.addCase(getTeacherCount.fulfilled, (state, action) => {
-
-      if (action.payload.success) {
-        state.gainsLoading = false
-        state.teacherCount = action.payload.data
-      }
-
-
-
-    });
-    builder.addCase(getKresCount.fulfilled, (state, action) => {
-
-      if (action.payload.success) {
-        state.gainsLoading = false
-        state.kresCount = action.payload.data
-      }
-
-
-
-    });
-    builder.addCase(getStudentCount.fulfilled, (state, action) => {
-
-      if (action.payload.success) {
-        state.gainsLoading = false
-        state.studentCount = action.payload.data
+        state.studentCount = action.payload.data[0].studentCount
+        state.ownerCount = action.payload.data[0].ownerCount
+        state.teacherCount = action.payload.data[0].teacherCount
+        state.kresCount = action.payload.data[0].schoolCount
       }
 
 
@@ -233,9 +300,8 @@ export const gainsSlice = createSlice({
     builder.addCase(getLastBought.fulfilled, (state, action) => {
 
       if (action.payload.success) {
-        state.lastBoughtLoading= false
-        state.gainsLoading = false
-        state.lastBought = action.payload.data
+        state.lastBoughtLoading = false
+        state.lastBought = action?.payload?.data[0].data
       }
 
 

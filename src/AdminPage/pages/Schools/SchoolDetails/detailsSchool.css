@@ -1,4 +1,4 @@
-.schooldetailsbox{
+.schooldetailsbox {
     border-radius: 10px;
     width: 12rem;
     height: 5rem;
@@ -12,8 +12,8 @@
     cursor: pointer;
 }
 
-.paymentSec{
-    
+.paymentSec {
+
     border-radius: 10px;
     height: 80%;
     overflow: hidden;
@@ -22,20 +22,34 @@
 
 }
 
-.altsectionbox{
+.altsectionbox {
     overflow: hidden;
     background-color: white;
     height: 100%;
 
 }
 
-.paid{
+.paid {
     border-radius: 10px;
-    
+
     box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.2);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
 
 
-.h50{
+@media screen and (max-width: 768px) {
+
+    .paid {
+        display: flex;
+        justify-content: space-between !important;
+    }
+    .eachelementpaid{
+        margin-right: 10px !important;
+    }
+}
+
+.h50 {
     height: 50vh;
 }

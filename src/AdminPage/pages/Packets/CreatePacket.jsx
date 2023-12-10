@@ -1,7 +1,57 @@
 
+import { useState } from "react";
 import { colors } from "../../color";
 import Inventory2Icon from '@mui/icons-material/Inventory2';
 function CreatePacket() {
+
+
+    const [createLoading, setcreateLoading] = useState();
+
+    const ip = import.meta.env.VITE_IP;
+
+
+    
+    const [creatingPacket, setcreatingPacket] = useState({});
+
+    const handleChange = (e) => {
+        const { id, value } = e.target;
+        setcreatingPacket((prevChanged) => ({
+            ...prevChanged,
+            [id]: value,
+        }));
+
+    }
+
+
+    const createButtonHandle = async () => {
+
+
+
+
+        try {
+            setcreateLoading(true)
+            creatingPacket.packetPrice = parseFloat(creatingPacket.packetPrice)
+            await fetch(ip + "admin/create-packet", {
+                method: "POST",
+                body: JSON.stringify(creatingPacket),
+
+                headers: {
+                    "Content-Type": "application/json",
+                    // 'Content-Type': 'application/x-www-form-urlencoded',
+                },
+            })
+        } catch (error) {
+            console.log(error);
+        }
+        finally {
+            setcreateLoading(false)
+        }
+
+    }
+
+
+
+
     return (
         <div>
             <div className="pt-3 mx-3" style={{ color: colors.text.focus }}>
@@ -16,12 +66,12 @@ function CreatePacket() {
                 <div className="altcrt col-11 col-lg-7 d-flex justify-content-center align-items-center flex-column">
                     <h2 className="mb-4" style={{ color: colors.text.focus }}><Inventory2Icon style={{ fontSize: "32px" }}></Inventory2Icon> Paket Oluştur</h2>
                     <div className="d-flex justify-content-center align-items-center flex-column">
-                        <input type="text" placeholder="Paket İsmi" className="inpp" />
-                        <input type="text" placeholder="Kişi Aralığı örn:1-30" className="inpp" />
+                        <input type="text" value={creatingPacket?.packetName} onChange={handleChange} id="packetName" placeholder="Paket İsmi" className="inpp" />
+                        <input type="text" value={creatingPacket?.range} onChange={handleChange} id="range" placeholder="Kişi Aralığı örn:1-30" className="inpp" />
 
-                        <input type="number" className="inpp" placeholder="Fiyatı" />
-                        <textarea type="text" className="inpp col-lg-12 col-11" placeholder="Açıklama" rows="5" cols="30" />
-                        <button className="btncreate">Oluştur</button>
+                        <input type="number" value={creatingPacket?.packetPrice} onChange={handleChange} id="packetPrice" className="inpp" placeholder="Fiyatı" />
+                        <textarea type="text" value={creatingPacket?.packetDescription} onChange={handleChange} id="packetDescription" className="inpp col-lg-12 col-11" placeholder="Açıklama" rows="5" cols="30" />
+                        <button onClick={createButtonHandle} className="btncreate">{createLoading? <div className="spinner-border"></div> : "Oluştur"}</button>
                     </div>
                 </div>
             </div>

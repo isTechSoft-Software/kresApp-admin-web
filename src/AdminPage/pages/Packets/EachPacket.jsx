@@ -18,8 +18,33 @@ function EachPacket({ packet }) {
             [id]: value,
         }));
 
+    }
+
+
+    const handleSaveButton = async (id) => {
+        
+
+        const options = {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(changed)
+          };
+
+        
+        await fetch("admin/update-packet/"+ id , options);
 
     }
+
+
+    const handleDeleteButton = async(id) => {
+        await fetch("admin/delete-packet/"+ id ,{
+            method: "DELETE"
+        });
+        
+    }
+
 
     return (
 
@@ -52,7 +77,7 @@ function EachPacket({ packet }) {
 
                         Açıklama:
                     </span>
-                    {editMode ? <textarea className="changedtextarea" value={changed?.packetDescription} onChange={handleChange} id="packetDescription" cols="28" rows="3"></textarea> : <span className="spanaciklama"> {changed?.packetDescription}123111111111111111111111111111111111111111111111111111</span>}
+                    {editMode ? <textarea className="changedtextarea" value={changed?.packetDescription} onChange={handleChange} id="packetDescription" cols="28" rows="3"></textarea> : <span className="spanaciklama"> {changed?.packetDescription}</span>}
 
                 </div>
                 <div className="px-2">
@@ -70,17 +95,20 @@ function EachPacket({ packet }) {
 
                         Kişi Sayısı:
                     </span>
-                    {editMode ? <input style={{ width: "30%" }} className="packetinputchange" value={changed?.range} onChange={handleChange} id="packetPrice"></input> : <span className="">{changed?.range}</span>}
+                    {editMode ? <input style={{ width: "30%" }} className="packetinputchange" value={changed?.range} onChange={handleChange} id="range"></input> : <span className="">{changed?.range}</span>}
 
                 </div>
-                <div className="d-flex justify-content-end mb-1">
-                    <div className={(packet != changed) ? "cursorpointer d-block" : "d-none cursorpointer"} style={{ color: colors.warning.main }}>
-                        <SaveIcon></SaveIcon>
+                <div className="d-flex justify-content-between px-4 mb-1">
+                    <div className="d-flex">
+                        <div onClick={() => handleSaveButton(packet.id)} className={(packet != changed) ? "cursorpointer d-block mx-2" : "d-none cursorpointer"} style={{ color: colors.warning.main }}>
+                            <SaveIcon></SaveIcon>
+                        </div>
+                        <div className="cursorpointer" onClick={() => setEditMode(!editMode)} style={{ color: colors.info.main }}>
+                            <EditNoteIcon></EditNoteIcon>
+                        </div>
+
                     </div>
-                    <div className="cursorpointer" onClick={() => setEditMode(!editMode)} style={{ color: colors.info.main }}>
-                        <EditNoteIcon></EditNoteIcon>
-                    </div>
-                    <div className="cursorpointer" style={{ color: colors.error.main }}>
+                    <div onClick={() => handleDeleteButton(packet.id)} className="cursorpointer" style={{ color: colors.error.main }}>
                         <DeleteForeverIcon></DeleteForeverIcon>
                     </div>
                 </div>

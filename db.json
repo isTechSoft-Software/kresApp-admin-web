@@ -98,6 +98,56 @@
         ]
     },
 
+    "getnotifs": {
+        "success": 1,
+        "data": [
+            {
+                "id": 3,
+                "title": "Deneme 2",
+                "description": "22Deneme d",
+                "documents": [
+                    "https://firebasestorage.googleapis.com/v0/b/kresappyapayzeka.appspot.com/o/ownerAnnouncements%2F1701936220899_111.png?alt=media&token=fdb39be4-cefe-400b-b705-ce7d7599590f"
+                ],
+                "createdAt": "2023-12-07T08:03:41.666Z"
+            },
+            {
+                "id": 2,
+                "title": "Deneme 2",
+                "description": "22Deneme d",
+                "documents": [],
+                "createdAt": "2023-12-07T07:56:09.066Z"
+            },
+            {
+                "id": 1,
+                "title": "Deneme 2",
+                "description": "22Deneme d",
+                "documents": [],
+                "createdAt": "2023-12-06T11:25:54.932Z"
+            },
+            {
+                "id": 5,
+                "title": "Deneme 2",
+                "description": "22Deneme d",
+                "documents": [],
+                "createdAt": "2023-12-06T11:25:54.932Z"
+            },
+            {
+                "id": 4,
+                "title": "Deneme 2",
+                "description": "22Deneme d",
+                "documents": [],
+                "createdAt": "2023-12-06T11:25:54.932Z"
+            },
+            {
+                "id": 6,
+                "title": "Deneme 2",
+                "description": "22Deneme d",
+                "documents": [],
+                "createdAt": "2023-12-06T11:25:54.932Z"
+            }
+        ],
+        "message": ""
+    },
 
 
     "getUserDetailsogretmen1": {    
@@ -192,7 +242,7 @@
             ]
         }
     },
-    "schools1": {    
+    "schools21": {    
         "success": 1,
         "data": {
             "id": 1,
@@ -253,44 +303,341 @@
             ]
         }
     },
-    "schools": {    
+    "schools1": {
         "success": 1,
         "data": [
             {
-                "id": 1,
-                "School": {
-                    "id": 1,
-                    "schoolName": "Giresun Kreşi",
-                    "state": true,
-                    "packetID": 4,
-                    "schoolSubMerchantKey": null,
-                    "createdAt": "2023-10-30T13:34:50.498Z",
-                    "updatedAt": "2023-10-30T13:34:50.498Z"
-                },
-                "Owner": {
-                    "id": 1,
-                    "ownerName": "Dogukan Tek",
-                    "ownerUsername": "o775794"
-                }
-            },
-            {
-                "id": 2,
-                "School": {
-                    "id": 2,
-                    "schoolName": "Samsun Kreş",
-                    "state": true,
-                    "packetID": 3,
-                    "schoolSubMerchantKey": null,
-                    "createdAt": "2023-10-31T09:20:15.742Z",
-                    "updatedAt": "2023-10-31T09:20:15.742Z"
-                },
-                "Owner": {
-                    "id": 2,
-                    "ownerName": "Onur Gonullu",
-                    "ownerUsername": "onur123"
+                "data": [
+                    {
+                        "id": 1,
+                        "School": {
+                            "id": 1,
+                            "schoolName": "Giresun Kres",
+                            "state": true,
+                            "createdAt": "2023-12-04T12:08:29.747Z"
+                        },
+                        "Owner": {
+                            "id": 1,
+                            "ownerName": "Doğukan Tek",
+                            "ownerUsername": "05526679921",
+                            "ownerMail": "admin@gmail.com"
+                        }
+                    },
+                    {
+                        "id": 2,
+                        "School": {
+                            "id": 2,
+                            "schoolName": "Sivas Kres",
+                            "state": true,
+                            "createdAt": "2023-12-04T14:12:58.624Z"
+                        },
+                        "Owner": {
+                            "id": 2,
+                            "ownerName": "baran efe",
+                            "ownerUsername": "05380575722",
+                            "ownerMail": "barann@gmail.com"
+                        }
+                    },
+                    {
+                        "id": 3,
+                        "School": {
+                            "id": 3,
+                            "schoolName": "Samsun Kres",
+                            "state": true,
+                            "createdAt": "2023-12-04T14:15:19.053Z"
+                        },
+                        "Owner": {
+                            "id": 3,
+                            "ownerName": "Ruveyda Yilmaz",
+                            "ownerUsername": "05380575755",
+                            "ownerMail": "ruveydaaa@gmail.com"
+                        }
+                    },
+                    {
+                        "id": 4,
+                        "School": {
+                            "id": 4,
+                            "schoolName": "Samsun Kres2",
+                            "state": true,
+                            "createdAt": "2023-12-06T13:25:55.678Z"
+                        },
+                        "Owner": {
+                            "id": 4,
+                            "ownerName": "Onur Gönüllü",
+                            "ownerUsername": "05354845151",
+                            "ownerMail": "onur@gmail.com"
+                        }
+                    },
+                    {
+                        "id": 5,
+                        "School": {
+                            "id": 5,
+                            "schoolName": "Samsun Kres2",
+                            "state": true,
+                            "createdAt": "2023-12-06T13:25:55.678Z"
+                        },
+                        "Owner": {
+                            "id": 5,
+                            "ownerName": "Onur Gönüllü",
+                            "ownerUsername": "05354845151",
+                            "ownerMail": "onur@gmail.com"
+                        }
+                    },
+                    {
+                        "id": 6,
+                        "School": {
+                            "id": 6,
+                            "schoolName": "Samsun Kres2",
+                            "state": true,
+                            "createdAt": "2023-12-06T13:25:55.678Z"
+                        },
+                        "Owner": {
+                            "id": 4,
+                            "ownerName": "Onur Gönüllü",
+                            "ownerUsername": "05354845151",
+                            "ownerMail": "onur@gmail.com"
+                        }
+                    },
+                    {
+                        "id": 7,
+                        "School": {
+                            "id": 7,
+                            "schoolName": "Samsun Kres2",
+                            "state": true,
+                            "createdAt": "2023-12-06T13:25:55.678Z"
+                        },
+                        "Owner": {
+                            "id": 4,
+                            "ownerName": "Onur Gönüllü",
+                            "ownerUsername": "05354845151",
+                            "ownerMail": "onur@gmail.com"
+                        }
+                    },
+                    {
+                        "id": 8,
+                        "School": {
+                            "id": 8,
+                            "schoolName": "Samsun Kres2",
+                            "state": true,
+                            "createdAt": "2023-12-06T13:25:55.678Z"
+                        },
+                        "Owner": {
+                            "id": 4,
+                            "ownerName": "Onur Gönüllü",
+                            "ownerUsername": "05354845151",
+                            "ownerMail": "onur@gmail.com"
+                        }
+                    },
+                    {
+                        "id": 9,
+                        "School": {
+                            "id": 9,
+                            "schoolName": "Samsun Kres2",
+                            "state": true,
+                            "createdAt": "2023-12-06T13:25:55.678Z"
+                        },
+                        "Owner": {
+                            "id": 4,
+                            "ownerName": "Onur Gönüllü",
+                            "ownerUsername": "05354845151",
+                            "ownerMail": "onur@gmail.com"
+                        }
+                    },
+                    {
+                        "id": 10,
+                        "School": {
+                            "id": 10,
+                            "schoolName": "Samsun Kres2",
+                            "state": true,
+                            "createdAt": "2023-12-06T13:25:55.678Z"
+                        },
+                        "Owner": {
+                            "id": 4,
+                            "ownerName": "Onur Gönüllü",
+                            "ownerUsername": "05354845151",
+                            "ownerMail": "onur@gmail.com"
+                        }
+                    }
+                ],
+                "pagination": {
+                    "total_records": 4,
+                    "total_per_page": 20,
+                    "total_page": 1,
+                    "current_page": 1,
+                    "next_page": null,
+                    "previous_page": null
                 }
             }
-        ]
+        ],
+        "message": ""
+    },
+    "schools2": {
+        "success": 1,
+        "data": [
+            {
+                "data": [
+                    {
+                        "id": 23461,
+                        "School": {
+                            "id": 12,
+                            "schoolName": "Giresun Kres",
+                            "state": true,
+                            "createdAt": "2023-12-04T12:08:29.747Z"
+                        },
+                        "Owner": {
+                            "id": 132,
+                            "ownerName": "Doğukan Tek",
+                            "ownerUsername": "05526679921",
+                            "ownerMail": "admin@gmail.com"
+                        }
+                    },
+                    {
+                        "id": 3462,
+                        "School": {
+                            "id": 124,
+                            "schoolName": "Sivas Kres",
+                            "state": true,
+                            "createdAt": "2023-12-04T14:12:58.624Z"
+                        },
+                        "Owner": {
+                            "id": 1512,
+                            "ownerName": "baran efe",
+                            "ownerUsername": "05380575722",
+                            "ownerMail": "barann@gmail.com"
+                        }
+                    },
+                    {
+                        "id": 3345,
+                        "School": {
+                            "id": 126,
+                            "schoolName": "Samsun Kres",
+                            "state": true,
+                            "createdAt": "2023-12-04T14:15:19.053Z"
+                        },
+                        "Owner": {
+                            "id": 246,
+                            "ownerName": "Ruveyda Yilmaz",
+                            "ownerUsername": "05380575755",
+                            "ownerMail": "ruveydaaa@gmail.com"
+                        }
+                    },
+                    {
+                        "id": 423,
+                        "School": {
+                            "id": 34572,
+                            "schoolName": "Samsun Kres2",
+                            "state": true,
+                            "createdAt": "2023-12-06T13:25:55.678Z"
+                        },
+                        "Owner": {
+                            "id": 3425,
+                            "ownerName": "Onur Gönüllü",
+                            "ownerUsername": "05354845151",
+                            "ownerMail": "onur@gmail.com"
+                        }
+                    },
+                    {
+                        "id": 53245,
+                        "School": {
+                            "id": 34265,
+                            "schoolName": "Samsun Kres2",
+                            "state": true,
+                            "createdAt": "2023-12-06T13:25:55.678Z"
+                        },
+                        "Owner": {
+                            "id": 775,
+                            "ownerName": "Onur Gönüllü",
+                            "ownerUsername": "05354845151",
+                            "ownerMail": "onur@gmail.com"
+                        }
+                    },
+                    {
+                        "id": 76,
+                        "School": {
+                            "id": 86,
+                            "schoolName": "Samsun Kres2",
+                            "state": true,
+                            "createdAt": "2023-12-06T13:25:55.678Z"
+                        },
+                        "Owner": {
+                            "id": 4,
+                            "ownerName": "Onur Gönüllü",
+                            "ownerUsername": "05354845151",
+                            "ownerMail": "onur@gmail.com"
+                        }
+                    },
+                    {
+                        "id": 1367,
+                        "School": {
+                            "id": 23547,
+                            "schoolName": "Samsun Kres2",
+                            "state": true,
+                            "createdAt": "2023-12-06T13:25:55.678Z"
+                        },
+                        "Owner": {
+                            "id": 3424,
+                            "ownerName": "Onur Gönüllü",
+                            "ownerUsername": "05354845151",
+                            "ownerMail": "onur@gmail.com"
+                        }
+                    },
+                    {
+                        "id": 1248,
+                        "School": {
+                            "id": 32545238,
+                            "schoolName": "Samsun Kres2",
+                            "state": true,
+                            "createdAt": "2023-12-06T13:25:55.678Z"
+                        },
+                        "Owner": {
+                            "id": 4,
+                            "ownerName": "Onur Gönüllü",
+                            "ownerUsername": "05354845151",
+                            "ownerMail": "onur@gmail.com"
+                        }
+                    },
+                    {
+                        "id": 912,
+                        "School": {
+                            "id": 23463579,
+                            "schoolName": "Samsun Kres2",
+                            "state": true,
+                            "createdAt": "2023-12-06T13:25:55.678Z"
+                        },
+                        "Owner": {
+                            "id": 4,
+                            "ownerName": "Onur Gönüllü",
+                            "ownerUsername": "05354845151",
+                            "ownerMail": "onur@gmail.com"
+                        }
+                    },
+                    {
+                        "id": 1120,
+                        "School": {
+                            "id": 4528410,
+                            "schoolName": "Samsun Kres2",
+                            "state": true,
+                            "createdAt": "2023-12-06T13:25:55.678Z"
+                        },
+                        "Owner": {
+                            "id": 4,
+                            "ownerName": "Onur Gönüllü",
+                            "ownerUsername": "05354845151",
+                            "ownerMail": "onur@gmail.com"
+                        }
+                    }
+                ],
+                "pagination": {
+                    "total_records": 4,
+                    "total_per_page": 20,
+                    "total_page": 1,
+                    "current_page": 1,
+                    "next_page": null,
+                    "previous_page": null
+                }
+            }
+        ],
+        "message": ""
     },
     "managers": {   
         "success": 1,
@@ -313,358 +660,65 @@
             }
         ]
     },
-    "teachers": {
-        "success": 1,
-        "data": [
-            {
-                "name": "Ogretmen 1",
-                "gender": "Male",
-                "kres": "Giresun Kreşi",
-                "kresID": 1,
-                "class": 1,
-                "phone": "05451112233",
-                "email": "dogukantek@example.com",
-                "id": 1
-            },
-            {
-                "name": "Ogretmen 2",
-                "gender": "Female",
-                "kres": "Giresun Kreşi",
-                "class": 2,
-                "phone": "054511111232233",
-                "email": "onrgnll@example.com",
-                "id": 2
-            },
-            {
-                "name": "Ogretmen 3",
-                "gender": "Female",
-                "kres": "Samsun Kreşi",
-                "class": 3,
-                "phone": "054511111232233",
-                "email": "onrgnll@example.com",
-                "id": 3
-            },
-            {
-                "name": "Ogretmen 4",
-                "gender": "Female",
-                "kres": "Samsun Kreşi",
-                "class": 4,
-                "phone": "054511111232233",
-                "email": "onrgnll@example.com",
-                "id": 4
-            }
-        ]
-    },
-    "personels": {
-        "success": 1,
-        "data": [
-            {
-                "name": "Aria Collins",
-                "gender": "Female",
-                "kres": "Giresun Kreşi",
-                "phone": "05459991111",
-                "email": "aria@example.com",
-                "id": 45
-            },
-            {
-                "name": "asd asdasf",
-                "gender": "Male",
-                "kres": "Samsun Kreşi",
-                "phone": "05459991111",
-                "email": "aria@example.com",
-                "id": 46
-            }
-        ]
-    },
-    "students": {
-        "success": 1,
-        "data": [
-            {
-                "name": "ogrenci 1",
-                "gender": "Female",
-                "kres": "Giresun Kreşi",
-                "class": 1,
-                "phone": "05459991111",
-                "email": "aria@example.com",
-                "id": 1
-            },
-            {
-                "name": "ogrenci 2",
-                "gender": "Male",
-                "kres": "Giresun Kreşi",
-                "class": 1,
-                "phone": "05459991111",
-                "email": "aria@example.com",
-                "id": 2
-            },
-            {
-                "name": "ogrenci 3",
-                "gender": "Male",
-                "kres": "Samsun Kreşi",
-                "class": 2,
-                "phone": "05459991111",
-                "email": "aria@example.com",
-                "id": 3
-            }
-        ]
-    },
-    "parents": {
-        "success": 1,
-        "data": [
-            {
-                "name": "ogrenci 1velisi",
-                "gender": "Female",
-                "kres": 1,
-                "class": 1,
-                "childID": 1,
-                "childName": "ogrenci 1",
-                "phone": "05459991111",
-                "email": "aria@example.com",
-                "id": 1
-            },
-            {
-                "name": "ogrenci velisi2",
-                "gender": "Male",
-                "kres": 2,
-                "class": 1,
-                "childID": 2,
-                "childName": "ogrenci 2",
-                "phone": "05459991111",
-                "email": "aria@example.com",
-                "id": 2
-            },
-            {
-                "name": "ogrenci 3",
-                "gender": "Male",
-                "kres": 2,
-                "class": 2,
-                "childID": 3,
-                "childName": "ogrenci 3",
-                "phone": "05459991111",
-                "email": "aria@example.com",
-                "id": 3
-            }
-        ]
-    },
     "classes": {
         "success": 1,
         "data": [
             {
                 "id": 1,
-                "name": "1. Sınıf",
-                "teacherName": "Ogretmen 1",
-                "capacity": 10,
-                "kres": "Giresun Kreşi",
-                "studentCount": 5,
-                "weeklyProgram": "4 VE 5 YAŞ ATAKUM YAZ PROGRAMI",
-                "students": [
+                "className": "BIRINCI SINIF",
+                "classSchoolID": 1,
+                "weeklyProgramUrl": null,
+                "classWeeklyProgram": null,
+                "classStudentNum": 10,
+                "createdAt": "2023-12-08T15:11:52.707Z",
+                "updatedAt": "2023-12-08T15:11:52.707Z",
+                "ClassTeachers": [
                     {
-                        "name": "ogrenci 1",
-                        "gender": "Female",
-                        "kres": "Giresun Kreşi",
-                        "class": 1,
-                        "phone": "05459991111",
-                        "email": "aria@example.com",
-                        "id": 1
-                    },
-                    {
-                        "name": "ogrenci 2",
-                        "gender": "Male",
-                        "kres": "Giresun Kreşi",
-                        "class": 1,
-                        "phone": "05459991111",
-                        "email": "aria@example.com",
-                        "id": 2
+                        "id": 1,
+                        "Teacher": {
+                            "id": 1,
+                            "teacherUsername": "11111111112",
+                            "schoolID": 1,
+                            "teacherName": "Hamdi",
+                            "teacherSurname": "OGRETMEN",
+                            "teacherProfilePicture": "https://firebasestorage.googleapis.com/v0/b/kresappyapayzeka.appspot.com/o/teachers%2F1702048269647_cagan2.jpg?alt=media&token=9ce81eba-cc31-499e-9e64-2c1ef7f5bb18",
+                            "teacherTitle": "Kreş Öğretmeni",
+                            "teacherPhoneNumber": "05526679929",
+                            "createdAt": "2023-12-08T15:11:10.933Z",
+                            "updatedAt": "2023-12-09T06:47:30.745Z"
+                        }
                     }
                 ]
             },
             {
                 "id": 2,
-                "name": "2. Sınıf",
-                "teacherName": "Ogretmen 2",
-                "capacity": 15,
-                "kres": "Giresun Kreşi",
-                "studentCount": 8,
-                "weeklyProgram": "6 VE 7 YAŞ ATAKUM YAZ PROGRAMI",
-                "students": []
-            },
-            {
-                "id": 3,
-                "name": "1. Sınıf",
-                "teacherName": "Ogretmen 3",
-                "capacity": 10,
-                "kres": "Samsun Kreşi",
-                "studentCount": 5,
-                "weeklyProgram": "4 VE 5 YAŞ ATAKUM YAZ PROGRAMI",
-                "students": []
-            },
-            {
-                "id": 4,
-                "name": "2. Sınıf",
-                "teacherName": "Ogretmen 4",
-                "capacity": 15,
-                "kres": "Samsun Kreşi",
-                "studentCount": 8,
-                "weeklyProgram": "6 VE 7 YAŞ ATAKUM YAZ PROGRAMI",
-                "students": []
+                "className": "Çiçekler",
+                "classSchoolID": 1,
+                "weeklyProgramUrl": null,
+                "classWeeklyProgram": null,
+                "classStudentNum": 15,
+                "createdAt": "2023-12-09T07:22:20.647Z",
+                "updatedAt": "2023-12-09T07:22:20.647Z",
+                "ClassTeachers": [
+                    {
+                        "id": 2,
+                        "Teacher": {
+                            "id": 2,
+                            "teacherUsername": "11111111113",
+                            "schoolID": 1,
+                            "teacherName": "Mete",
+                            "teacherSurname": "Ozden",
+                            "teacherProfilePicture": null,
+                            "teacherTitle": "Kreş Öğretmeni",
+                            "teacherPhoneNumber": "05051000914",
+                            "createdAt": "2023-12-08T20:44:39.994Z",
+                            "updatedAt": "2023-12-08T20:44:39.994Z"
+                        }
+                    }
+                ]
             }
-        ]
-    },
-    "allUsers": {
-        "success": 1,
-        "managers": {
-            "success": 1,
-            "data": [
-                {
-                    "name": "Dogukan Tek",
-                    "gender": "Male",
-                    "kres": "Giresun Kreşi",
-                    "phone": "05451112233",
-                    "email": "dogukantek@example.com",
-                    "id": 1
-                },
-                {
-                    "name": "Onur Gonullu",
-                    "gender": "Male",
-                    "kres": "Samsun Kreşi",
-                    "phone": "054511111232233",
-                    "email": "onrgnll@example.com",
-                    "id": 2
-                }
-            ]
-        },
-        "teachers": {
-            "success": 1,
-            "data": [
-                {
-                    "name": "Ogretmen 1",
-                    "gender": "Male",
-                    "kres": "Giresun Kreşi",
-                    "class": 1,
-                    "phone": "05451112233",
-                    "email": "dogukantek@example.com",
-                    "id": 3
-                },
-                {
-                    "name": "Ogretmen 2",
-                    "gender": "Female",
-                    "kres": "Samsun Kreşi",
-                    "class": 3,
-                    "phone": "054511111232233",
-                    "email": "onrgnll@example.com",
-                    "id": 4
-                },
-                {
-                    "name": "Ogretmen 3",
-                    "gender": "Female",
-                    "kres": "Samsun Kreşi",
-                    "class": 4,
-                    "phone": "054511111232233",
-                    "email": "onrgnll@example.com",
-                    "id": 5
-                },
-                {
-                    "name": "Ogretmen 4",
-                    "gender": "Female",
-                    "kres": "Samsun Kreşi",
-                    "class": 5,
-                    "phone": "054511111232233",
-                    "email": "onrgnll@example.com",
-                    "id": 6
-                }
-            ]
-        },
-        "personels": {
-            "success": 1,
-            "data": [
-                {
-                    "name": "Aria Collins",
-                    "gender": "Female",
-                    "kres": "Giresun Kreşi",
-                    "phone": "05459991111",
-                    "email": "aria@example.com",
-                    "id": 7
-                },
-                {
-                    "name": "asd asdasf",
-                    "gender": "Male",
-                    "kres": "Samsun Kreşi",
-                    "phone": "05459991111",
-                    "email": "aria@example.com",
-                    "id": 8
-                }
-            ]
-        },
-        "students": {
-            "success": 1,
-            "data": [
-                {
-                    "name": "ogrenci 2",
-                    "gender": "Female",
-                    "kres": "Giresun Kreşi",
-                    "class": 1,
-                    "phone": "05459991111",
-                    "email": "aria@example.com",
-                    "id": 9
-                },
-                {
-                    "name": "ogrenci 2",
-                    "gender": "Male",
-                    "kres": "Samsun Kreşi",
-                    "class": 1,
-                    "phone": "05459991111",
-                    "email": "aria@example.com",
-                    "id": 10
-                },
-                {
-                    "name": "ogrenci 3",
-                    "gender": "Male",
-                    "kres": "Samsun Kreşi",
-                    "class": 2,
-                    "phone": "05459991111",
-                    "email": "aria@example.com",
-                    "id": 11
-                }
-            ]
-        },
-        "parents": {
-            "success": 1,
-            "data": [
-                {
-                    "name": "ogrenci 1velisi",
-                    "gender": "Female",
-                    "kres": 1,
-                    "class": 1,
-                    "childID": 1,
-                    "childName": "ogrenci 1",
-                    "phone": "05459991111",
-                    "email": "aria@example.com",
-                    "id": 1
-                },
-                {
-                    "name": "ogrenci velisi2",
-                    "gender": "Male",
-                    "kres": 2,
-                    "class": 1,
-                    "childID": 2,
-                    "childName": "ogrenci 2",
-                    "phone": "05459991111",
-                    "email": "aria@example.com",
-                    "id": 2
-                },
-                {
-                    "name": "ogrenci 3",
-                    "gender": "Male",
-                    "kres": 2,
-                    "class": 2,
-                    "childID": 3,
-                    "childName": "ogrenci 3",
-                    "phone": "05459991111",
-                    "email": "aria@example.com",
-                    "id": 3
-                }
-            ]
-        }
+        ],
+        "message": ""
     },
     "gains": { 
         "success": 1,
@@ -707,19 +761,71 @@
     "openedkresthisyear": {
         "success": 1,
         "data": [
-            15,
-            20,
-            32,
-            10,
-            25,
-            66,
-            12,
-            84,
-            20,
-            10,
-            2,
-            8
-        ]
+            [
+                {
+                    "month": "2022-11",
+                    "count": "5"
+                },
+                {
+                    "month": "2022-12",
+                    "count": "48"
+                },
+                {
+                    "month": "2023-1",
+                    "count": "43"
+                },
+                {
+                    "month": "2023-2",
+                    "count": "42"
+                },
+                {
+                    "month": "2023-3",
+                    "count": "1"
+                },
+                {
+                    "month": "2023-4",
+                    "count": "422"
+                },
+                {
+                    "month": "2023-5",
+                    "count": "433"
+                },
+                {
+                    "month": "2023-6",
+                    "count": "4"
+                },
+                {
+                    "month": "2023-7",
+                    "count": "554"
+                },
+                {
+                    "month": "2023-8",
+                    "count": "664"
+                },
+                {
+                    "month": "2023-9",
+                    "count": "774"
+                },
+                {
+                    "month": "2023-10",
+                    "count": "884"
+                },
+                {
+                    "month": "2023-11",
+                    "count": "884"
+                },
+                {
+                    "month": "2023-12",
+                    "count": "994"
+                },
+                
+                {
+                    "month": "2024-1",
+                    "count": "993"
+                }
+            ]
+        ],
+        "message": ""
     },
 
 

@@ -1,53 +1,44 @@
+/* eslint-disable react/prop-types */
 
-import EditNoteIcon from '@mui/icons-material/EditNote';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import male from "../../../assets/images/person.png"
-import female from "../../../assets/images/femaleperson.png"
 import { colors } from '../../../color';
-
+import PersonIcon from '@mui/icons-material/Person';
 import "../users.css"
 
-function Yonetici({ item , handleClickOpenProfile , setSentToProfileID ,setSentToProfileRole }) {
+function Yonetici({ item , handleClickOpenProfile , setSentToProfile  }) {
 
 
     const handleClick = () => {
-        setSentToProfileID(item.id)
-        setSentToProfileRole("yonetici")
-        handleClickOpenProfile();
+        handleClickOpenProfile(item);
     }
 
-
+    const date = new Date(item.School.createdAt);
+    const formattedDate = `${date.getUTCDate().toString().padStart(2, '0')}.${(date.getUTCMonth() + 1).toString().padStart(2, '0')}.${date.getUTCFullYear()}`;
+    console.log(formattedDate);
     return (
 
 
-        <div className="d-flex justify-content-around eachh m-2 ">
+        <div onClick={handleClick} className="cursorpointer d-flex justify-content-between  eachh m-2 ">
 
-            <div className="text-center collar" style={{ color: colors.text.main }}>
-                {item.id}
+            <div className="col-lg-1 col-1 text-center collar" style={{ color: colors.text.main }}>
+                <PersonIcon></PersonIcon>
             </div>
-            <div className="text-center collar" style={{ color: colors.text.main }}>
-                {item.name} {item.surname}
+            <div className="col-lg-1 col-1 text-center collar" style={{ color: colors.text.main }}>
+                {item.Owner.id}
             </div>
-            <div className="text-center collar" style={{ color: colors.text.main }}>
-                {item.kres}
+            <div className="col-lg-2 col-2 text-center collar" style={{ color: colors.text.main }}>
+                {item.Owner.ownerName}
             </div>
-            <div className="text-center collar" style={{ color: colors.text.main }}>
-                {item.phone}
+            <div className="col-lg-2 col-2 text-center collar" style={{ color: colors.text.main }}>
+                {item.School.schoolName}
             </div>
-            <div className="text-center collar" style={{ color: colors.text.main }}>
-                {item.email}
+            <div className="col-lg-2 col-2 text-center collar" style={{ color: colors.text.main }}>
+                {item.Owner.ownerUsername}
             </div>
-            <div className="text-center collar" style={{ color: colors.text.main }}>
-                02.03.2000
+            <div className="col-lg-2 col-2 text-center collar" style={{ color: colors.text.main }}>
+                {item.Owner.ownerMail}
             </div>
-            <div className="text-center collar d-flex justify-content-center" style={{ color: colors.text.main }}>
-
-                <div className="cursorpointer mx-1"  onClick={handleClick} style={{ color: colors.info.main }}>
-                    <EditNoteIcon></EditNoteIcon>
-                </div>
-                <div className="cursorpointer" style={{ color: colors.error.main }}>
-                    <DeleteForeverIcon></DeleteForeverIcon>
-                </div>
+            <div className="col-lg-2 col-2 text-center collar" style={{ color: colors.text.main }}>
+                {formattedDate}
             </div>
         </div>
     );

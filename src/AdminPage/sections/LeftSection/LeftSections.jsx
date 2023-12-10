@@ -13,7 +13,7 @@ function LeftSection() {
         <div className="leftsectionsticky" style={{ backgroundColor: colors.background.default }}>
             <div className='w-100'>
                 {window.innerWidth < 600 &&
-                    <div className='w-100 m-2 d-flex align-items-center'>
+                    <div className='w-100 p-2 d-flex align-items-center justify-content-between'>
                         <div className=''>
                             <WrappedMenuItems></WrappedMenuItems>
 
@@ -21,6 +21,9 @@ function LeftSection() {
                         <div className='m-auto justify-content-center'>
 
                             <p style={{ color: colors.text.focus }} className="pt-3 d-inline text-center cursorpointer" onClick={() => navigate("/anasayfa")}><ChildCareIcon></ChildCareIcon>Kreş App Admin Panel</p>
+                        </div>
+                        <div>
+
                         </div>
 
                     </div>
