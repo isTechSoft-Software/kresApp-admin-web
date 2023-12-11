@@ -5,6 +5,9 @@ import { colors } from "../../color";
 import NotificationAddIcon from '@mui/icons-material/NotificationAdd';
 import DeleteIcon from '@mui/icons-material/Delete';
 import CloudUploadIcon from '@mui/icons-material/CloudUpload';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Notif() {
 
 
@@ -34,21 +37,54 @@ function Notif() {
 
 
     const handleCreate = async () => {
-        let formData = new FormData();
+        try {
 
-        formData.append("title", notification.title);
-        formData.append("description", notification.description);
+            let formData = new FormData();
+            if (!(notification?.title) || !(notification?.description)) {
 
-        selectedFiles.forEach((element, index) => {
-            formData.append(`documents[${index}]`, element);
-        });
-        formData.forEach((value, key) => {
-            console.log(`${key}: ${value}`);
-        });
-        await fetch(ip + "admin/create-announcement-to-owners", {
-            method: "POST",
-            body: formData
-        });
+                toast.error('Başlık Ve Açıklama Kısmı Boş Bırakılamaz.', {
+                    position: "bottom-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+            }
+            else {
+                formData.append("title", notification.title);
+                formData.append("description", notification.description);
+
+                selectedFiles.forEach((element) => {
+                    formData.append(`documents`, element);
+                });
+                formData.forEach((value, key) => {
+                    console.log(`${key}: ${value}`);
+                });
+
+                await fetch(ip + "admin/create-announcement-to-owners", {
+                    method: "POST",
+                    body: formData
+                }).then(() => {
+
+                    toast.success('Duyuru Başarı ile Yayınlandı.', {
+                        position: "bottom-right",
+                        autoClose: 2000,
+                        hideProgressBar: false,
+                        closeOnClick: true,
+                        pauseOnHover: true,
+                        draggable: true,
+                        progress: undefined,
+                        theme: "light",
+                    });
+                });
+
+            }
+        } catch (error) {
+            console.log(error);
+        }
 
 
 
@@ -71,19 +107,41 @@ function Notif() {
 
 
     const deleteHandle = async (id) => {
-        await fetch(ip + "admin/delete-announcement/" + id, {
-            method: "DELETE"
-        });
+        try {
+            await fetch(ip + "admin/delete-announcement/" + id, {
+                method: "DELETE"
+            }).then(() => {
 
-        getNotifications();
+                toast.success('Duyuru Başarı ile Silindi.', {
+                    position: "bottom-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                });
+                getNotifications();
+            });
+
+
+        } catch (error) {
+            console.log(error);
+
+        }
     }
 
     const getNotifications = async () => {
+        try {
+            const res = await fetch(ip + "admin/list-announcements");
+            const data = await res.json();
 
-        const res = await fetch(ip + "getnotifs");
-        const data = await res.json();
+            setNotifications(data);
 
-        setNotifications(data);
+        } catch (error) {
+            console.log(error);
+        }
 
     }
 
@@ -226,49 +284,49 @@ function Notif() {
                         </div>
                         <div className="xxxx ">
                             {
-                                !(notifications?.data?.length > 0) ? <div className="d-flex justify-content-center"><div className="spinner-border"></div></div> : 
-                            
-                            
-                            notifications?.data?.map((element) => {
-                                const date = new Date(element.createdAt)
+                                !(notifications?.data?.length > 0) ? <div className="d-flex justify-content-center"><div className="spinner-border"></div></div> :
 
-                                var saat = String(date.getHours()).padStart(2, '0'); // Saat
-                                var dakika = String(date.getMinutes()).padStart(2, '0'); // Dakika
-                                var gun = String(date.getDate()).padStart(2, '0'); // Gün
-                                var ay = String(date.getMonth() + 1).padStart(2, '0'); // Ay (0-based olduğu için +1 eklenir)
-                                var yil = date.getFullYear();
 
-                                var formatliTarih = saat + ":" + dakika + " " + gun + "/" + ay + "/" + yil;
-                                return (
+                                    notifications?.data?.map((element) => {
+                                        const date = new Date(element.createdAt)
 
-                                    <div key={element.id} className="d-flex eachsended m-3">
-                                        <div className="col-lg-2 col-2 text-center" style={{ color: colors.text.focus }}>
-                                            {element.title}
-                                        </div>
-                                        <div className="col-lg-6 col-6 text-center" style={{ color: colors.text.focus }}>
-                                            {element.description}
-                                        </div>
-                                        <div className="col-lg-1 col-1 text-center" style={{ color: colors.text.focus }}>
-                                            {element.documents?.length || "0"}
-                                        </div>
-                                        {/* <div className="col-lg-3 col-3 mbbild text-center" style={{ color: colors.text.focus }}>
+                                        var saat = String(date.getHours()).padStart(2, '0'); // Saat
+                                        var dakika = String(date.getMinutes()).padStart(2, '0'); // Dakika
+                                        var gun = String(date.getDate()).padStart(2, '0'); // Gün
+                                        var ay = String(date.getMonth() + 1).padStart(2, '0'); // Ay (0-based olduğu için +1 eklenir)
+                                        var yil = date.getFullYear();
+
+                                        var formatliTarih = saat + ":" + dakika + " " + gun + "/" + ay + "/" + yil;
+                                        return (
+
+                                            <div key={element.id} className="d-flex eachsended m-3">
+                                                <div className="col-lg-2 col-2 text-center" style={{ color: colors.text.focus }}>
+                                                    {element.title}
+                                                </div>
+                                                <div className="col-lg-6 col-6 text-center" style={{ color: colors.text.focus }}>
+                                                    {element.description}
+                                                </div>
+                                                <div className="col-lg-1 col-1 text-center" style={{ color: colors.text.focus }}>
+                                                    {element.documents?.length || "0"}
+                                                </div>
+                                                {/* <div className="col-lg-3 col-3 mbbild text-center" style={{ color: colors.text.focus }}>
                                         onrgnll
                                     </div> */}
-                                        {/* <div className="col-lg-2 mbbild text-center" style={{ color: colors.text.focus }}>
+                                                {/* <div className="col-lg-2 mbbild text-center" style={{ color: colors.text.focus }}>
                                         Yöneticiler,Veliler,Öğrenciler
                                     </div> */}
-                                        <div className="col-lg-2 col-2 text-center" style={{ color: colors.text.focus }}>
-                                            {formatliTarih}
-                                        </div>
-                                        <div className="col-lg-1 col-1 text-center" style={{ color: colors.text.focus }}>
-                                            <div className="cursorpointer d-inline" onClick={() => deleteHandle(element.id)}>
-                                                <DeleteIcon style={{ color: colors.error.main }} />
+                                                <div className="col-lg-2 col-2 text-center" style={{ color: colors.text.focus }}>
+                                                    {formatliTarih}
+                                                </div>
+                                                <div className="col-lg-1 col-1 text-center" style={{ color: colors.text.focus }}>
+                                                    <div className="cursorpointer d-inline" onClick={() => deleteHandle(element.id)}>
+                                                        <DeleteIcon style={{ color: colors.error.main }} />
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                    </div>
 
-                                )
-                            })}
+                                        )
+                                    })}
 
                         </div>
                     </div>
@@ -278,6 +336,18 @@ function Notif() {
             </div>
 
 
+            <ToastContainer
+                position="bottom-right"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
         </div>
     );
 }

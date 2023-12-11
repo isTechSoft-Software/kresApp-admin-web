@@ -2,6 +2,10 @@
 import { useState } from "react";
 import { colors } from "../../color";
 import Inventory2Icon from '@mui/icons-material/Inventory2';
+
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 function CreatePacket() {
 
 
@@ -10,7 +14,7 @@ function CreatePacket() {
     const ip = import.meta.env.VITE_IP;
 
 
-    
+
     const [creatingPacket, setcreatingPacket] = useState({});
 
     const handleChange = (e) => {
@@ -31,6 +35,7 @@ function CreatePacket() {
         try {
             setcreateLoading(true)
             creatingPacket.packetPrice = parseFloat(creatingPacket.packetPrice)
+            
             await fetch(ip + "admin/create-packet", {
                 method: "POST",
                 body: JSON.stringify(creatingPacket),
@@ -39,9 +44,30 @@ function CreatePacket() {
                     "Content-Type": "application/json",
                     // 'Content-Type': 'application/x-www-form-urlencoded',
                 },
+            }).then(() => {
+                toast.success('Paket Oluşturma Başarılı', {
+                    position: "bottom-right",
+                    autoClose: 2000,
+                    hideProgressBar: false,
+                    closeOnClick: true,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    });
             })
         } catch (error) {
             console.log(error);
+            toast.error('Paket Oluşturma Başarısız', {
+                position: "bottom-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                });
         }
         finally {
             setcreateLoading(false)
@@ -71,10 +97,22 @@ function CreatePacket() {
 
                         <input type="number" value={creatingPacket?.packetPrice} onChange={handleChange} id="packetPrice" className="inpp" placeholder="Fiyatı" />
                         <textarea type="text" value={creatingPacket?.packetDescription} onChange={handleChange} id="packetDescription" className="inpp col-lg-12 col-11" placeholder="Açıklama" rows="5" cols="30" />
-                        <button onClick={createButtonHandle} className="btncreate">{createLoading? <div className="spinner-border"></div> : "Oluştur"}</button>
+                        <button onClick={createButtonHandle} className="btncreate">{createLoading ? <div className="spinner-border"></div> : "Oluştur"}</button>
                     </div>
                 </div>
             </div>
+            <ToastContainer
+                position="bottom-right"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
         </div>);
 }
 

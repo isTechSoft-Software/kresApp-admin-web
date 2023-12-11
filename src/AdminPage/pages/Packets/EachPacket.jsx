@@ -5,12 +5,13 @@ import EditNoteIcon from '@mui/icons-material/EditNote';
 import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { useState } from "react";
 import SaveIcon from '@mui/icons-material/Save';
-function EachPacket({ packet }) {
+function EachPacket({ packet, getPackets, notify, notify2 }) {
 
     const [editMode, setEditMode] = useState(false)
 
     const [changed, setChanged] = useState(packet);
 
+    const ip = import.meta.env.VITE_IP;
     const handleChange = (e) => {
         const { id, value } = e.target;
         setChanged((prevChanged) => ({
@@ -22,27 +23,33 @@ function EachPacket({ packet }) {
 
 
     const handleSaveButton = async (id) => {
-        
 
         const options = {
             method: 'PUT',
             headers: {
-              'Content-Type': 'application/json'
+                'Content-Type': 'application/json'
             },
             body: JSON.stringify(changed)
-          };
+        };
 
-        
-        await fetch("admin/update-packet/"+ id , options);
+
+        await fetch(ip + "admin/update-packet/" + id, options).then(() => {
+
+            notify();
+        });
 
     }
 
 
-    const handleDeleteButton = async(id) => {
-        await fetch("admin/delete-packet/"+ id ,{
+    const handleDeleteButton = async (id) => {
+        await fetch(ip + "admin/delete-packet/" + id, {
             method: "DELETE"
+        }).then(() => {
+            notify2();
         });
-        
+
+        getPackets();
+
     }
 
 

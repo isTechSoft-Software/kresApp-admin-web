@@ -55,18 +55,30 @@ export const getGains = createAsyncThunk('getGains', async () => {
 
     const res = await fetch(ip + "admin/get-progress-payment/", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(last7days)
     })
     const res2 = await fetch(ip + "admin/get-progress-payment/", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(last30days)
     })
     const res3 = await fetch(ip + "admin/get-progress-payment/", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(last6months)
     })
     const res4 = await fetch(ip + "admin/get-progress-payment/", {
       method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify(allTime)
     })
 
@@ -116,7 +128,7 @@ export const getGainsWeekly = createAsyncThunk('getGainsWeekly', async () => {
         firstDate: formattedLast7Days,
         secondDate: formattedLast7Days
       };
-      const res = await fetch("admin/get-progress-payment", {
+      const res = await fetch(ip + "admin/get-progress-payment", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -145,7 +157,6 @@ export const getGainsThisYear = createAsyncThunk('getGainsThisYear', async () =>
 
   const res = await fetch(ip + "admin/get-annual-progress-payment",)
   const data = await res.json();
-
   const lastYearCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
 
@@ -273,7 +284,14 @@ export const getStatistic = createAsyncThunk('getStatistic', async () => {
 export const getLastBought = createAsyncThunk('getLastBought', async () => {
   try {
 
-    const res = await fetch(ip + "admin/list-purchases/",)
+    const res = await fetch(ip + "admin/list-purchases/",{
+      method: "POST",
+      body: JSON.stringify({
+        "schoolName": "",
+        "isActive": true,
+        "packetName": "",
+    })
+    })
     const data = await res.json();
 
     return data
@@ -316,11 +334,8 @@ export const gainsSlice = createSlice({
 
     });
     builder.addCase(getGainsThisYear.fulfilled, (state, action) => {
-
-      if (action.payload.success) {
-        state.gainsLoading = false
-        state.gainsthisyear = action.payload.data
-      }
+      
+        state.gainsthisyear = action.payload
 
 
 

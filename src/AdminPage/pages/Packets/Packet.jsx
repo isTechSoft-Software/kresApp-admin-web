@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import EachPacket from "./EachPacket";
 import "./packet.css"
 import { colors } from "../../color";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 function Packet() {
 
     const [packets, setPackets] = useState();
@@ -9,15 +11,19 @@ function Packet() {
     const ip = import.meta.env.VITE_IP;
 
     const getPackets = async () => {
+        try {
+            const res = await fetch(ip + "admin/list-packets")
+            const data = await res.json();
+            if (data.success == 1) {
 
-        const res = await fetch(ip + "getPackets")
-        const data = await res.json();
-        if (data.success == 1) {
+                setPacketsLoading(false)
+            }
 
-            setPacketsLoading(false)
+            setPackets(data.data)
+
+        } catch (error) {
+            console.log(error);
         }
-
-        setPackets(data.data)
 
     }
 
@@ -26,6 +32,26 @@ function Packet() {
         getPackets();
     }, [])
 
+    const notify2 = () => toast.success('Paket Başarı ile Silindi', {
+        position: "bottom-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+    });
+    const notify = () => toast.success('Paket Başarı ile kaydedildi', {
+        position: "bottom-right",
+        autoClose: 2000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+    });
     return (
         <div>
             <div className="pt-3 mx-3" style={{ color: colors.text.focus }}>
@@ -39,13 +65,26 @@ function Packet() {
                 <div className="d-flex justify-content-center genel flex-wrap">
                     {packetsLoading && <div className="d-flex justify-content-center mt-2"><div style={{ fontSize: "10px" }} className="spinner-border "></div></div>}
                     {packets?.length > 0 && packets.map((packet) => {
-                        return (<EachPacket key={packet.id} packet={packet}></EachPacket>);
+                        return (<EachPacket notify2={notify2} notify={notify} getPackets={getPackets} key={packet.id} packet={packet}></EachPacket>);
                     })}
 
 
 
                 </div>
             </div>
+
+            <ToastContainer
+                position="bottom-right"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+            />
         </div>);
 }
 
