@@ -284,13 +284,17 @@ export const getStatistic = createAsyncThunk('getStatistic', async () => {
 export const getLastBought = createAsyncThunk('getLastBought', async () => {
   try {
 
-    const res = await fetch(ip + "admin/list-purchases/",{
+    const res = await fetch(ip + "admin/list-purchases/", {
       method: "POST",
+
+      headers: {
+        "Content-Type": "application/json",
+      },
       body: JSON.stringify({
         "schoolName": "",
         "isActive": true,
         "packetName": "",
-    })
+      })
     })
     const data = await res.json();
 
@@ -334,8 +338,8 @@ export const gainsSlice = createSlice({
 
     });
     builder.addCase(getGainsThisYear.fulfilled, (state, action) => {
-      
-        state.gainsthisyear = action.payload
+
+      state.gainsthisyear = action.payload
 
 
 
