@@ -7,7 +7,7 @@ function OpenedSchoolChart({openedSchoolArray}) {
       xAxis={[
         {
           id: 'barCategories',
-          data: ['Ocak', 'Şub', 'Mart', "Nis","May", "Haz","Tem", "Ağus", "Eyl" , "Ekim", "Kas", "Ara"],
+          data: ['Ocak', 'Şub', 'Mart', "Nis","May", "Haz","Tem", "Ağu", "Eyl" , "Ekim", "Kas", "Ara"],
           scaleType: 'band',
         },
       ]}

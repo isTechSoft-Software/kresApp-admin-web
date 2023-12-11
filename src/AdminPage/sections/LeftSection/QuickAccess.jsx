@@ -58,10 +58,11 @@ function QuickAccess() {
                         </div>
 
                     </div>
-                    <div className="d-flex align-items-center ">
+                    
+                    {/* <div className="d-flex align-items-center ">
 
                         <span className="d-flex align-items-center badgee">4</span>
-                    </div>
+                    </div> */}
                 </li>
 
                 <li>

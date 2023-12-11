@@ -37,7 +37,7 @@ function Notif() {
 
         formData.append("title", notification.title);
         formData.append("description", notification.description);
-    
+
         selectedFiles.forEach((element, index) => {
             formData.append(`documents[${index}]`, element);
         });
@@ -51,13 +51,13 @@ function Notif() {
 
 
 
-        
+
     }
 
 
 
 
-    
+
 
 
 
@@ -105,7 +105,7 @@ function Notif() {
                 </div>
 
 
-                <div className="mt-3 mbdis d-flex justify-content-center align-items-center">
+                <div className="mt-3 mbdis d-flex justify-content-center flex-column align-items-center">
                     <div className="col-lg-5">
 
                         <textarea onChange={handleChange} className="textarea" id="description" value={notification?.description} cols={window.innerWidth > 600 ? "55" : "30"} rows="8" placeholder="Mesajınız"></textarea>
@@ -114,10 +114,11 @@ function Notif() {
 
 
 
-                    <div className="d-flex overflow-auto col-lg-5 col-11  fileselect">
+                    <div className="d-flex justify-content-center overflow-auto mt-3 col-lg-5 col-11  fileselect">
+
                         {selectedFiles.length > 0 && selectedFiles.map((element) => {
 
-                            return (<div className="m-2 overflow-visible" key={element.lastModified + element.size}>
+                            return (<div className="m-2" key={element.lastModified + element.size}>
                                 <label htmlFor="file-upload" className="custom-file-upload">
                                     <div className="d-flex cursorpointer flex-column align-items-center justify-content-center filechose">
 
@@ -148,6 +149,7 @@ function Notif() {
                             <input id="file-upload" onChange={handleFileChange} type="file" />
 
                         </div>
+
                     </div>
                 </div>
 

@@ -76,7 +76,7 @@ function AdminPanelDashboard() {
                     </div>
                     <div className="leftalt col-lg-6 col-11 d-flex flex-column align-items-center">
                         <div>
-                            <h5 className="pt-2" style={{ color: colors.text.main, backgroundColor: "white" }}>Hizmeti Son Satın Alanlar</h5>
+                            <h5 className="pt-2" style={{ color: colors.text.main, backgroundColor: "white" }}>Son Açılan Kreşler</h5>
                         </div>
                         <div className="w-100 m-2 overflow-hidden" style={{ background: "white" }}>
                             {lastBoughtLoading && <div className="d-flex justify-content-center mt-2"><div style={{fontSize: "10px"}} className="spinner-border "></div></div>}
