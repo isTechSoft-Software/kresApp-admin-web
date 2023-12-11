@@ -34,23 +34,23 @@ export const getGains = createAsyncThunk('getGains', async () => {
     const formattedLast6Months = last6MonthsDate.toISOString().split('T')[0];
 
     const last6months = {
-      "firstDate": formattedLast6Months,
-      "secondDate": formattedToday
+      firstDate: formattedLast6Months,
+      secondDate: formattedToday
     };
 
 
     const last30days = {
-      "firstDate": formattedLast30Days,
-      "secondDate": formattedToday
+      firstDate: formattedLast30Days,
+      secondDate: formattedToday
     };
 
     const last7days = {
-      "firstDate": formattedLast7Days,
-      "secondDate": formattedToday
+      firstDate: formattedLast7Days,
+      secondDate: formattedToday
     };
     const allTime = {
-      "firstDate": "2020-3-20",
-      "secondDate": "2050-12-23"
+      firstDate: "2020-3-20",
+      secondDate: "2050-12-23"
     };
 
     const res = await fetch(ip + "admin/get-progress-payment/", {
@@ -113,8 +113,8 @@ export const getGainsWeekly = createAsyncThunk('getGainsWeekly', async () => {
       const formattedLast7Days = last7DaysDate.toISOString().split('T')[0];
 
       const last7days = {
-        "firstDate": formattedLast7Days,
-        "secondDate": formattedLast7Days
+        firstDate: formattedLast7Days,
+        secondDate: formattedLast7Days
       };
       const res = await fetch("admin/get-progress-payment", {
         method: "POST",
