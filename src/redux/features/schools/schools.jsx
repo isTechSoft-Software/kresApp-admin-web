@@ -13,7 +13,7 @@ const initialState = {
 
 export const getSchools = createAsyncThunk('getSchools', async (page) => {
   try {
-    const res = await fetch(ip +"schools" + page,)
+    const res = await fetch(ip +"admin/list-schools?page=" + page,)
     const data = await res.json();
 
     return data

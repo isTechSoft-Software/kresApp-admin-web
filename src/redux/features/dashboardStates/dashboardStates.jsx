@@ -101,28 +101,40 @@ export const getGains = createAsyncThunk('getGains', async () => {
 
 
 export const getGainsWeekly = createAsyncThunk('getGainsWeekly', async () => {
-  // try {
+  try {
+    const today = new Date();
 
-  //   const today = new Date();
-  //   const last7DaysDate = new Date(today);
-  //   last7DaysDate.setDate(today.getDate() - 7);
+    let array = [];
 
+    for (let index = 7; index > 0; index--) {
+      let last7DaysDate = new Date(today);
+      last7DaysDate.setDate(today.getDate() - index);
 
+      const formattedLast7Days = last7DaysDate.toISOString().split('T')[0];
 
-  //   const res = await fetch(ip + "admin/get-progress-payment/", {
-  //     method: "POST",
-  //     body: JSON.stringify(last7days)
-  //   })
+      const last7days = {
+        "firstDate": formattedLast7Days,
+        "secondDate": formattedLast7Days
+      };
+      const res = await fetch("admin/get-progress-payment", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(last7days)
 
+      })
 
-  //   const data = await res.json();
+      const data = await res.json();
+      array[last7DaysDate.getDay()] = data.data[0]
+    }
 
-  //   return data
-  // } catch (error) {
-  //   console.log(error);
+    return array;
+  } catch (error) {
+    console.log(error);
 
-  //   throw error;
-  // }
+    throw error;
+  }
 });
 
 
@@ -130,17 +142,53 @@ export const getGainsWeekly = createAsyncThunk('getGainsWeekly', async () => {
 
 
 export const getGainsThisYear = createAsyncThunk('getGainsThisYear', async () => {
-  // try {
 
-  //   const res = await fetch(ip + "gainsthisyear/",)
-  //   const data = await res.json();
+  const res = await fetch(ip + "admin/get-annual-progress-payment",)
+  const data = await res.json();
 
-  //   return data
-  // } catch (error) {
-  //   console.log(error);
+  const lastYearCounts = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 
-  //   throw error;
-  // }
+
+  data.data[0].map((element) => {
+    if (element.month == "1") {
+      lastYearCounts[0] = element.payment
+    }
+    if (element.month == "2") {
+      lastYearCounts[1] = element.payment
+    }
+    if (element.month == "3") {
+      lastYearCounts[2] = element.payment
+    }
+    if (element.month == "4") {
+      lastYearCounts[3] = element.payment
+    }
+    if (element.month == "5") {
+      lastYearCounts[4] = element.payment
+    }
+    if (element.month == "6") {
+      lastYearCounts[5] = element.payment
+    }
+    if (element.month == "7") {
+      lastYearCounts[6] = element.payment
+    }
+    if (element.month == "8") {
+      lastYearCounts[7] = element.payment
+    }
+    if (element.month == "9") {
+      lastYearCounts[8] = element.payment
+    }
+    if (element.month == "10") {
+      lastYearCounts[9] = element.payment
+    }
+    if (element.month == "11") {
+      lastYearCounts[10] = element.payment
+    }
+    if (element.month == "12") {
+      lastYearCounts[11] = element.payment
+    }
+  })
+
+  return lastYearCounts
 });
 
 
@@ -248,21 +296,14 @@ export const gainsSlice = createSlice({
   extraReducers: (builder) => {
 
     builder.addCase(getGains.fulfilled, (state, action) => {
-
-      if (action.payload.success) {
-        state.gainsLoading = false
-        state.gains = action.payload.data
-      }
+      state.gains = action.payload
 
 
 
     });
     builder.addCase(getGainsWeekly.fulfilled, (state, action) => {
 
-      if (action.payload.success) {
-        state.gainsLoading = false
-        state.gainsweekly = action.payload.data
-      }
+      state.gainsweekly = action.payload
 
 
 

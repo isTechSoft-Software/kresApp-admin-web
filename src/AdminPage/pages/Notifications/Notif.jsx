@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import "./notif.css"
 import { colors } from "../../color";
@@ -224,7 +225,11 @@ function Notif() {
 
                         </div>
                         <div className="xxxx ">
-                            {notifications?.data?.map((element) => {
+                            {
+                                !(notifications?.data?.length > 0) ? <div className="d-flex justify-content-center"><div className="spinner-border"></div></div> : 
+                            
+                            
+                            notifications?.data?.map((element) => {
                                 const date = new Date(element.createdAt)
 
                                 var saat = String(date.getHours()).padStart(2, '0'); // Saat

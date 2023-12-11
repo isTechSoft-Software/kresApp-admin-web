@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from "react";
 import "./users.css"
 import SearchIcon from '@mui/icons-material/Search';
@@ -13,7 +14,7 @@ import Profile from "../Profile/Profile";
 import InfiniteScroll from "react-infinite-scroll-component";
 function Users() {
 
-    const { managers, usersLoading ,page , hasMore} = useSelector(state => state.users)
+    const { managers ,page , hasMore} = useSelector(state => state.users)
     const [sentToProfile, setSentToProfile] = useState();
 
     const [openProfile, setOpenProfile] = useState(false);
@@ -113,8 +114,7 @@ function Users() {
                                         height="65vh" // Corrected the syntax here
                                         endMessage={<div></div>}>
 
-                                        {!(managers.length) > 0 ? <div className="d-flex justify-content-center"><div className="spinner-border"></div></div> :
-                                            managers.filter((element) => (element?.Owner?.ownerName?.toLowerCase() + " " + element?.Owner?.ownerName?.toLowerCase()).includes(searchValue.toLowerCase())) // İsim içinde arama yap
+                                        {managers.filter((element) => (element?.Owner?.ownerName?.toLowerCase() + " " + element?.Owner?.ownerName?.toLowerCase()).includes(searchValue.toLowerCase())) // İsim içinde arama yap
                                                 .map((element) => (
                                                     <Yonetici handleClickOpenProfile={() => handleClickOpenProfile(element)} setSentToProfile={setSentToProfile} item={element} key={element.Owner.id}></Yonetici>
                                                 ))}

@@ -7,8 +7,8 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['mui/x-charts']
   },
-  server: {
-    host: '192.168.1.185'
-  }
+  // server: {
+  //   host: '192.168.1.185'
+  // }
 
 })

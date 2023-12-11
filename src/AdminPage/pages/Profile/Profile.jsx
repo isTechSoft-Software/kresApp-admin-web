@@ -1,20 +1,15 @@
 
-import { useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+
+import { useNavigate } from "react-router-dom";
 import "./profile.css"
 import Avatar from '@mui/material/Avatar';
 import { colors } from "../../color";
-import SaveAsIcon from '@mui/icons-material/SaveAs';
-import EditNoteIcon from '@mui/icons-material/EditNote';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+// import SaveAsIcon from '@mui/icons-material/SaveAs';
+// import EditNoteIcon from '@mui/icons-material/EditNote';
+// import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import { Dialog, DialogContent } from "@mui/material";
 
 function Profile({ open, onClose, user }) {
-
-
-console.log(user);
-
-
 
 
     const navigate = useNavigate()

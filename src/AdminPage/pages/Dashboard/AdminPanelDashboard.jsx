@@ -1,18 +1,15 @@
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { colors } from "../../color";
-import OpenedSchoolChart from "./Chart";
+import OpenedSchoolChart from "./graphs/OpenedSchoolsChart";
 import "./adminpaneldashboard.css"
 import HomeIcon from '@mui/icons-material/Home';
-
-import male from "../../assets/images/person.png"
-import female from "../../assets/images/femaleperson.png"
-import PaymentChart from "./PaymentChart";
-import PaymentChartWeekly from "./PaymentChartWeekly";
-import Box from "./Box";
+import PaymentChart from "./graphs/PaymentChart";
+import PaymentChartWeekly from "./graphs/PaymentChartWeekly";
+import Box from "./components/Box";
 import { useDispatch, useSelector } from "react-redux";
 import { getGains, getGainsThisYear, getGainsWeekly, getLastBought, getOpenedKresThisYear, getStatistic } from "../../../redux/features/dashboardStates/dashboardStates";
-import LastBought from "./LastBought";
+import LastBought from "./components/LastBought";
 function AdminPanelDashboard() {
 
 

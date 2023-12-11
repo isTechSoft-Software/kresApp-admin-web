@@ -1,11 +1,10 @@
+
 import { Dialog } from "@mui/material";
 import { colors } from "../../color";
 import "./classes.css"
-import male from "../../assets/images/person.png"
-import female from "../../assets/images/femaleperson.png"
 
-import EditNoteIcon from '@mui/icons-material/EditNote';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+// import EditNoteIcon from '@mui/icons-material/EditNote';
+// import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import Profile from "../Profile/Profile";
 import { useState } from "react";
 function StudentsMenu({ open, handleClose, students }) {

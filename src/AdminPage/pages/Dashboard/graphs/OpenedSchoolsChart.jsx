@@ -1,4 +1,5 @@
-import * as React from 'react';
+/* eslint-disable react/prop-types */
+
 import { BarChart } from '@mui/x-charts/BarChart';
 
 function OpenedSchoolChart({openedSchoolArray}) {

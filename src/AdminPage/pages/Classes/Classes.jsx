@@ -1,10 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 
-import { siniflarornek } from "../../Ornekler";
+
 import { colors } from "../../color";
 import "./classes.css"
 import { useEffect, useState } from "react";
 import StudentsMenu from "./StudentsMenu";
-import { useLocation, useParams } from "react-router-dom";
+import {  useParams } from "react-router-dom";
 import EachClass from "./EachClass";
 
 function Classes() {

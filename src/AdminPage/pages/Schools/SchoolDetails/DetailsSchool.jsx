@@ -5,7 +5,6 @@ import SchoolIcon from '@mui/icons-material/School';
 import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import { useNavigate, useParams } from "react-router-dom";
-import ShowOwnerMenu from "./DetailsMenus/OwnerProfile";
 import Profile from "../../Profile/Profile";
 function DetailsSchool() {
 
@@ -15,7 +14,6 @@ function DetailsSchool() {
     const navigate = useNavigate();
 
     const [school, setSchool] = useState();
-    console.log(school);
 
 
 
@@ -31,7 +29,7 @@ function DetailsSchool() {
     const getSchoolDetail = async (action) => {
         try {
 
-            const res = await fetch(ip + "schools" +"21" ,)// action,)
+            const res = await fetch(ip + "admin/get-school-detail/" + action,)
             const data = await res.json();
 
             setSchool(data.data)

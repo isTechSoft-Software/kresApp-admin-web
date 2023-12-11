@@ -68,25 +68,6 @@
 
 }
 
-.owner {
-    background-image: url("../../assets/images/owner.jpg");
-}
-
-.kres {
-    background-image: url("../../assets/images/kres.jpg");
-}
-
-.personel {
-    background-image: url("../../assets/images/personel.jpg");
-}
-
-.student {
-    background-image: url("../../assets/images/student.jpg");
-}
-
-.teacher {
-    background-image: url("../../assets/images/teacher.png");
-}
 
 .leftalt {
     border-radius: 10px;

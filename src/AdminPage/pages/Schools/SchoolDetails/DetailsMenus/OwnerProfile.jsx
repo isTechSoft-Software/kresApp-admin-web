@@ -1,11 +1,11 @@
 
-import TextField from '@mui/material/TextField';
-import Dialog from '@mui/material/Dialog';
+// import TextField from '@mui/material/TextField';
+// import Dialog from '@mui/material/Dialog';
 import PropTypes from 'prop-types';
-import SearchIcon from '@mui/icons-material/Search';
-import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
-import { colors } from '../../../../color';
+// import SearchIcon from '@mui/icons-material/Search';
+// import { useNavigate } from 'react-router-dom';
+// import { useState } from 'react';
+// import { colors } from '../../../../color';
 import "./ownerprofile.css"
 
 import Avatar from '@mui/material/Avatar';

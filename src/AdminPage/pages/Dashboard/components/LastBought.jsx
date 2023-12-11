@@ -1,3 +1,4 @@
+
 function LastBought({ element }) {
 
     const date = new Date(element.createdAt);

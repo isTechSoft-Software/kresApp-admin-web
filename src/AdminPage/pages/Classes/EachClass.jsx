@@ -1,29 +1,29 @@
+
 import "./classes.css"
 
-import EditNoteIcon from '@mui/icons-material/EditNote';
-import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
-import SaveIcon from '@mui/icons-material/Save';
+// import EditNoteIcon from '@mui/icons-material/EditNote';
+// import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
+// import SaveIcon from '@mui/icons-material/Save';
 import SchoolIcon from '@mui/icons-material/School';
 import Face2Icon from '@mui/icons-material/Face2';
-import { useState } from "react";
 import { colors } from "../../color";
 function EachClass({ element, index, handleClickOpen }) {
 
 
 
-    const [editMode, setEditMode] = useState(false)
+    // const [editMode, setEditMode] = useState(false)
 
-    const [changed, setChanged] = useState(element);
+    // const [changed, setChanged] = useState(element);
 
-    const handleChange = (e) => {
-        const { id, value } = e.target;
-        setChanged((prevChanged) => ({
-            ...prevChanged,
-            [id]: value,
-        }));
+    // const handleChange = (e) => {
+    //     const { id, value } = e.target;
+    //     setChanged((prevChanged) => ({
+    //         ...prevChanged,
+    //         [id]: value,
+    //     }));
 
 
-    }
+    // }
 
 
 
