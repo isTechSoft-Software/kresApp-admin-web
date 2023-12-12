@@ -14,6 +14,9 @@ function LastBought({ element }) {
             <div className="mg">
                 {element.School.Packet.packetName}
             </div>
+            <div className="mg">
+                {element.price}
+            </div>
             <div>
                 {formattedDate}
             </div>

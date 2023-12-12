@@ -24,12 +24,16 @@ function EachPacket({ packet, getPackets, notify, notify2 }) {
 
     const handleSaveButton = async (id) => {
 
+        let temp = changed
+
+        delete temp.id
+
         const options = {
             method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify(changed)
+            body: JSON.stringify(temp)
         };
 
 
@@ -37,6 +41,7 @@ function EachPacket({ packet, getPackets, notify, notify2 }) {
 
             notify();
         });
+        setEditMode(!editMode)
 
     }
 

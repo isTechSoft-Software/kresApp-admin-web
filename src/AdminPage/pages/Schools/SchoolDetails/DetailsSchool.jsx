@@ -150,8 +150,8 @@ function DetailsSchool() {
                                             <div className="d-flex flex-column overflow-auto" style={{ color: colors.text.focus }}>
                                                 <span className="fw-bold">{formattedDateString}</span> <span>Tarihinden Beri KreşApp Kullanıyor</span>
 
-                                                <span>Şu an <span className="fw-bold">{school.Packet.packetName}</span> paketini kullanıyor.</span>
-                                                <span>Yıllık Ödemesi <span className="fw-bold">{school.Packet.packetPrice} TL</span></span>
+                                                <span>Şu an <span className="fw-bold">{school?.Packet?.packetName}</span> paketini kullanıyor.</span>
+                                                <span>Yıllık Ödemesi <span className="fw-bold">{school?.Packet?.packetPrice} TL</span></span>
 
 
 
