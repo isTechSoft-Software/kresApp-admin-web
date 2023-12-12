@@ -6,6 +6,10 @@ import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
 import CreditCardIcon from '@mui/icons-material/CreditCard';
 import { useNavigate, useParams } from "react-router-dom";
 import Profile from "../../Profile/Profile";
+import OwnerProfile from "./DetailsMenus/OwnerProfile";
+import RestoreIcon from '@mui/icons-material/Restore';
+import DoneIcon from '@mui/icons-material/Done';
+import InfoIcon from '@mui/icons-material/Info';
 function DetailsSchool() {
 
     const { id } = useParams()
@@ -42,12 +46,38 @@ function DetailsSchool() {
         }
     };
 
-    console.log(school);
+
+    const [paymentDetails, setpaymentDetails] = useState([]);
+
+
 
     useEffect(() => {
-        getSchoolDetail(id);
+        getSchoolDetail(id).then(async () => {
+            const response = await fetch(ip + "admin/list-purchases?page=1", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    "schoolName": school?.schoolName,
+                    "packetName": ""
+                })
+
+            })
+            const data = await response.json();
+
+            setpaymentDetails(data.data[0].data)
+
+        });
     }, [])
 
+    const formattedDate = new Date(school?.createdAt || "2023-6-6");
+
+    const day = String(formattedDate.getDate()).padStart(2, '0');
+    const month = String(formattedDate.getMonth() + 1).padStart(2, '0'); // Ay değeri 0'dan başlar, bu nedenle 1 ekleyerek düzeltiyoruz.
+    const year = formattedDate.getFullYear();
+    
+    const formattedDateString = `${day}-${month}-${year}`;
 
     return (
         <div >
@@ -72,7 +102,7 @@ function DetailsSchool() {
                                     </div>
                                 </div>
                                 <div className="d-flex flex-column justify-content-around">
-                                    <div className="schooldetailsbox" onClick={() => setOpen(true)}>
+                                    <div className="schooldetailsbox" onClick={handleClickOpen}>
                                         <BusinessCenterIcon className="mx-2" /> Yönetici
                                     </div>
 
@@ -87,38 +117,44 @@ function DetailsSchool() {
                         <div className="h-100 d-flex justify-content-center align-items-center">
                             <div className="paymentSec col-lg-8 col-11 d-flex flex-column">
                                 <div style={{ color: colors.text.focus }} className="border-bottom p-3 d-flex  justify-content-center align-items-center">
-                                    <CreditCardIcon className="mx-2"></CreditCardIcon> Ödeme Bilgileri
+                                    <InfoIcon className="mx-2"></InfoIcon> Genel Bilgiler
                                 </div>
                                 <div className="d-flex h-100">
                                     <div className="col-6 altsectionbox p-3">
                                         <h5 style={{ color: colors.text.focus }} className="pb-2">Son Ödemeler</h5>
-                                        <div className="mb-2 p-2 paid overflow-auto">
-                                            <div className="eachelementpaid" style={{ color: colors.text.focus }} >
-                                                <CreditCardIcon style={{ color: colors.text.focus }}></CreditCardIcon>
-                                            </div>
-                                            <div className="eachelementpaid" style={{ color: colors.text.focus }} >
-                                                5000TL
-                                            </div>
-                                            <div style={{ color: colors.text.focus }} >
-                                                18/06/2023
-                                            </div>
-                                        </div>
+
+                                        {paymentDetails.length > 0 && paymentDetails.map((element) => {
+                                            return (
+
+                                                <div key={element.id} className="mb-2 p-2 paid overflow-auto">
+                                                    <div className="eachelementpaid" style={{ color: colors.text.focus }} >
+                                                        <CreditCardIcon style={{ color: colors.text.focus }}></CreditCardIcon>
+                                                    </div>
+                                                    <div className="eachelementpaid" style={{ color: colors.text.focus }} >
+                                                        {element.price}
+                                                    </div>
+                                                    <div style={{ color: colors.text.focus }} >
+                                                        {!(element.isActive) ? <RestoreIcon></RestoreIcon> : <DoneIcon></DoneIcon> }
+                                                    </div>
+                                                </div>
+
+                                            )
+                                        })}
+
+
+
                                     </div>
                                     <div className="col-6 altsectionbox border-start d-flex justify-content-center align-items-center">
-                                        <div className="creditcart d-flex flex-column  align-items-center border w-75 h-75">
-                                            <CreditCardIcon style={{ fontSize: "5rem", color: colors.text.focus }}></CreditCardIcon>
+                                        <div className="creditcart d-flex flex-column  align-items-center w-75 h-75">
+                                            <InfoIcon style={{ fontSize: "4rem", color: colors.text.focus }}></InfoIcon>
                                             <div className="d-flex flex-column overflow-auto" style={{ color: colors.text.focus }}>
-                                                <p>
+                                                <span className="fw-bold">{formattedDateString}</span> <span>Tarihinden Beri KreşApp Kullanıyor</span>
 
-                                                    6 Aydır KresApp Kullanıyor
-                                                </p>
-                                                <p>
+                                                <span>Şu an <span className="fw-bold">{school.Packet.packetName}</span> paketini kullanıyor.</span>
+                                                <span>Yıllık Ödemesi <span className="fw-bold">{school.Packet.packetPrice} TL</span></span>
 
-                                                    Toplam Ödenen Tutar: 250000
-                                                </p>
-                                                <p>
-                                                    0 TL borç
-                                                </p>
+
+
                                             </div>
                                         </div>
                                     </div>
@@ -133,7 +169,7 @@ function DetailsSchool() {
 
             </div>
 
-            <Profile open={open} onClose={handleClose} id={school?.owner?.id} role={"yonetici"}></Profile>
+            <OwnerProfile open={open} onClose={handleClose} element={school}></OwnerProfile>
 
         </div>
     );

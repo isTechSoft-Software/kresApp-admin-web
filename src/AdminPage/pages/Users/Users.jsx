@@ -53,7 +53,6 @@ function Users() {
 
     }, [])
 
-    console.log(managers.Owner);
     return (
         <div>
 

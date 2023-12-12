@@ -49,7 +49,7 @@ export const boughtsSlice = createSlice({
     builder.addCase(getPurchases.fulfilled, (state, action) => {
 
       if (action.payload.success) {
-        if (action.payload.data[0].pagination.total_page >= action.payload.data[0].pagination.current_page) {
+        if (action.payload.data[0].pagination_.total_page >= action.payload.data[0]?.pagination.current_page) {
 
           state.boughtsLoading = false
           state.boughts.push(...action.payload.data[0].data)

@@ -26,7 +26,7 @@ function LastBoughtNotificationsPage() {
 
     const [schoolName, setschoolName] = useState("");
     const [packetName, setpacketName] = useState("");
-    const [date1, setDate1] = useState(new Date('2020-01-01'));
+    const [date1, setDate1] = useState(new Date('2020-1-1'));
     const [date2, setDate2] = useState(new Date());
     const [isActive, setisActive] = useState(true);
 
@@ -36,8 +36,8 @@ function LastBoughtNotificationsPage() {
         packetName,
         isActive,
         createdAt: {
-            createdAtStart: date1?.getFullYear() + "-" + date1?.getMonth() + "-" + date1?.getDate() || "2020-01-01",
-            createdAtEnd: date2?.getFullYear() + "-" + date2?.getMonth() + "-" + date2?.getDate() || "2020-01-01"
+            createdAtStart: date1?.getFullYear() + "-" + (date1?.getMonth()+1) + "-" + date1?.getDate() || "2020-1-1",
+            createdAtEnd: date2?.getFullYear() + "-" + (date2?.getMonth()+1) + "-" + date2?.getDate() || "2020-1-1"
         }
     }
     useEffect(() => {
@@ -68,7 +68,7 @@ function LastBoughtNotificationsPage() {
 
     const getPackets = async () => {
         try {
-            const res = await fetch(ip + "list-packets")
+            const res = await fetch(ip + "admin/list-packets")
             const data = await res.json();
 
             if (data.success) {
@@ -156,7 +156,7 @@ function LastBoughtNotificationsPage() {
 
                                 </div>
                                 <div className='d-flex justify-content-between'>
-                                    <p>Aktif mi?</p>
+                                    <p>Eski Durum</p>
                                     <input type='checkbox' checked={isActive} onClick={onChangeActive} />
                                     <div>
                                     </div>

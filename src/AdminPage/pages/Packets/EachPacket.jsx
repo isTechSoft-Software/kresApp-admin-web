@@ -25,7 +25,7 @@ function EachPacket({ packet, getPackets, notify, notify2 }) {
     const handleSaveButton = async (id) => {
 
         const options = {
-            method: 'PUT',
+            method: 'PATCH',
             headers: {
                 'Content-Type': 'application/json'
             },

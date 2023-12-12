@@ -110,32 +110,36 @@ export const getGains = createAsyncThunk('getGains', async () => {
 export const getGainsWeekly = createAsyncThunk('getGainsWeekly', async () => {
   try {
     const today = new Date();
-
-    let array = [0,0,0,0,0,0,0];
-
+    let array = [0, 0, 0, 0, 0, 0, 0];
     for (let index = 7; index > 0; index--) {
-      let last7DaysDate = new Date(today);
-      last7DaysDate.setDate(today.getDate() - index);
-
-      const formattedLast7Days = last7DaysDate.toISOString().split('T')[0];
-
-      const last7days = {
-        firstDate: formattedLast7Days,
-        secondDate: formattedLast7Days
-      };
-      const res = await fetch(ip + "admin/get-progress-payment", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(last7days)
-
-      })
-
-      const data = await res.json();
-      array[last7DaysDate.getDay()] = data.data[0]
+        let last7DaysDate = new Date(today);
+        last7DaysDate.setDate(today.getDate() - index);
+    
+        const formattedLast7Days = last7DaysDate.toISOString().split('T')[0];
+    
+        const last7days = {
+            firstDate: formattedLast7Days,
+            secondDate: formattedLast7Days
+        };
+        const res = await fetch(ip + "admin/get-progress-payment", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(last7days)
+  
+        })
+    
+        const data = await res.json();
+    
+        if(last7DaysDate.getDay() == 0){
+            array[6] = !(data.data.length > 0) ? 0 : data.data[0]
+        }else{
+            array[last7DaysDate.getDay()-1] = !(data.data.length > 0) ? 0 : data.data[0]
+    
+        }
     }
-
+    
     return array;
   } catch (error) {
     console.log(error);

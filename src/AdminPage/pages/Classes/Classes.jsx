@@ -28,18 +28,18 @@ function Classes() {
     const fetchDatas = async () => {
         const res = await fetch(ip+"admin/get-school-detail/" + id)
         const data = await res.json();
-        setSchool(data.data)
+        setSchool(data.data[0])
         const res2 = await fetch(ip+"admin/list-classes/" + id)
         const data2 = await res2.json();
-        setClasses(data2.data)
 
-        classes?.forEach(async (element ) => {
+        data2?.data?.forEach(async (element ) => {
             const res = await fetch( ip + "admin/list-students/" + element.id )
             const data = await res.json();
             element.students = data.data
             setStudentCount(studentCount + element.students.length)
             setTeacherCount(teacherCount + element.ClassTeachers.length)
         })
+        setClasses(data2.data)
 
 
 
