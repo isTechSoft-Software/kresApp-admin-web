@@ -36,7 +36,7 @@ function App() {
               <Route path="/okullar" element={!login ? <LoginPage/> :<Schools />}></Route>
               <Route path="/kullanicilar" element={!login ? <LoginPage/> :<Users />}></Route>
               <Route path="/paketler" element={!login ? <LoginPage/> :<Packet />}></Route>
-              <Route path="/sonsatinalanlar" element={!login ? <LoginPage/> :<LastBoughtNotificationsPage />}></Route>
+              <Route path="/satinalinanlar" element={!login ? <LoginPage/> :<LastBoughtNotificationsPage />}></Route>
               <Route path="/paketler/olustur" element={!login ? <LoginPage/> :<CreatePacket />}></Route>
               <Route path="/okullar/olustur" element={!login ? <LoginPage/> :<CreateSchool />}></Route>
               <Route path="/okullar/:id" element={!login ? <LoginPage/> :<DetailsSchool />}></Route>

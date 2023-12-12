@@ -31,8 +31,10 @@ function DetailsSchool() {
 
             const res = await fetch(ip + "admin/get-school-detail/" + action,)
             const data = await res.json();
+            if (data.success) {
 
-            setSchool(data.data)
+                setSchool(data.data[0])
+            }
         } catch (error) {
             console.log(error);
 
@@ -94,7 +96,7 @@ function DetailsSchool() {
                                             <div className="eachelementpaid" style={{ color: colors.text.focus }} >
                                                 <CreditCardIcon style={{ color: colors.text.focus }}></CreditCardIcon>
                                             </div>
-                                            <div  className="eachelementpaid" style={{ color: colors.text.focus }} >
+                                            <div className="eachelementpaid" style={{ color: colors.text.focus }} >
                                                 5000TL
                                             </div>
                                             <div style={{ color: colors.text.focus }} >

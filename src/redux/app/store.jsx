@@ -4,6 +4,7 @@ import loginSlice from '../features/login/loginSlice'
 import schoolsSlice  from '../features/schools/schools'
 import  usersSlice  from '../features/users/users'
 import  gainsSlice  from '../features/dashboardStates/dashboardStates'
+import  boughtsSlice from '../features/boughts/boughts'
 
 export const store = configureStore({
   reducer: {
@@ -11,7 +12,8 @@ export const store = configureStore({
     login: loginSlice,
     schools: schoolsSlice,
     users: usersSlice,
-    gains: gainsSlice
+    gains: gainsSlice,
+    boughts: boughtsSlice,
 
   },
 })

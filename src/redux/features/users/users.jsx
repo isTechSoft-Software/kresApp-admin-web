@@ -16,13 +16,13 @@ const initialState = {
 export const getManagers = createAsyncThunk('getManagers', async (page) => {
   try {
 
-    const res = await fetch(ip +"admin/list-schools?page=" + page,{
+    const res = await fetch(ip + "admin/list-schools?page=" + page, {
       method: "POST",
-      
+
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({"text": ""})
+      body: JSON.stringify({ "text": "" })
     })
     const data = await res.json();
 
@@ -43,18 +43,22 @@ export const usersSlice = createSlice({
   },//builder
   extraReducers: (builder) => {
 
-    
+
     builder.addCase(getManagers.fulfilled, (state, action) => {
-      
+
       if (action.payload.success) {
-        state.usersLoading = false
-        state.managers.push(...action.payload.data[0].data)
-        state.page +=1 ;
-      }else{
+
+        if (action.payload.data[0].pagination.total_page >= action.payload.data[0].pagination.current_page) {
+          state.usersLoading = false
+          state.managers.push(...action.payload.data[0].data)
+          state.page += 1;
+        } else {
+          state.hasMore = false
+        }
+      } else {
         state.hasMore = false
-      }
-    });
-   
+      }});
+
   },
 })
 

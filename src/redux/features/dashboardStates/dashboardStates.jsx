@@ -89,18 +89,13 @@ export const getGains = createAsyncThunk('getGains', async () => {
 
 
     const values = {
-      "success": 1,
-      "data": {
         "last7days": data.data[0],
         "last30days": data2.data[0],
         "last6months": data3.data[0],
         "totalGained": data4.data[0],
-      }
     }
-
-
-
     return values
+    
   } catch (error) {
     console.log(error);
 
@@ -116,7 +111,7 @@ export const getGainsWeekly = createAsyncThunk('getGainsWeekly', async () => {
   try {
     const today = new Date();
 
-    let array = [];
+    let array = [0,0,0,0,0,0,0];
 
     for (let index = 7; index > 0; index--) {
       let last7DaysDate = new Date(today);

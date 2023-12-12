@@ -4,23 +4,22 @@ import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
 const ip = import.meta.env.VITE_IP;
 
 const initialState = {
-  schools: [],
+  boughts: [],
   page: 1,
   hasMore: true,
-  schoolsLoading: true,
-  nextPage: 1
+  boughtsLoading: true,
 
 }
 
-export const getSchools = createAsyncThunk('getSchools', async (page) => {
+export const getPurchases = createAsyncThunk('getPurchases', async ({page, body}) => {
   try {
-    const res = await fetch(ip +"admin/list-schools?page=" + page,{
+    const res = await fetch(ip + "admin/list-purchases?page=" + page, {
       method: "POST",
-      
+
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({"text": ""})
+      body: JSON.stringify(body)
     })
     const data = await res.json();
 
@@ -36,8 +35,8 @@ export const getSchools = createAsyncThunk('getSchools', async (page) => {
 
 
 
-export const schoolsSlice = createSlice({
-  name: 'schools',
+export const boughtsSlice = createSlice({
+  name: 'boughts',
   initialState,
   reducers: {
     incPage: (state) => {
@@ -47,14 +46,16 @@ export const schoolsSlice = createSlice({
   },//builder
   extraReducers: (builder) => {
 
-    builder.addCase(getSchools.fulfilled, (state, action) => {
+    builder.addCase(getPurchases.fulfilled, (state, action) => {
 
       if (action.payload.success) {
         if (action.payload.data[0].pagination.total_page >= action.payload.data[0].pagination.current_page) {
 
-          state.schoolsLoading = false
-          state.schools.push(...action.payload.data[0].data)
+          state.boughtsLoading = false
+          state.boughts.push(...action.payload.data[0].data)
           state.page += 1;
+        }else{
+          state.hasMore = false
         }
       } else {
         state.hasMore = false
@@ -69,4 +70,4 @@ export const schoolsSlice = createSlice({
 // Action creators are generated for each case reducer function
 // export const {incPage } = schoolsSlice.actions
 
-export default schoolsSlice.reducer
+export default boughtsSlice.reducer

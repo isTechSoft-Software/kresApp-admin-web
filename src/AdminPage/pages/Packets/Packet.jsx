@@ -19,7 +19,7 @@ function Packet() {
                 setPacketsLoading(false)
             }
 
-            setPackets(data.data)
+            setPackets(data.data[0])
 
         } catch (error) {
             console.log(error);

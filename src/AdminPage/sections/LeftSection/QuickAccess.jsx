@@ -6,7 +6,7 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 import { colors } from "../../color"
 import React, { useState } from "react";
-// import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import SchoolIcon from '@mui/icons-material/School';
 import ManageUser from "./LeftSectionsMenus/ManageUser";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
@@ -46,22 +46,22 @@ function QuickAccess() {
                         <p style={{ color: colors.text.main }}>Ana sayfa</p>
                     </div>
                 </li>
-                {/* <li className="d-flex cursorpointer justify-content-between" onClick={() => navigate("/sonsatinalanlar")}>
+                <li className="d-flex cursorpointer justify-content-between" onClick={() => navigate("/satinalinanlar")}>
                     <div className="d-flex align-items-center asdasd">
                         <div className="d-flex p-2 iconss" style={{ backgroundColor: "white" }}>
                             <ShoppingCartIcon style={{ color: "#3A416F" }}></ShoppingCartIcon>
                         </div>
                         <div className="d-flex justify-content-between" style={{ color: colors.text.main }}>
-                            <span>Son Satın Alanlar</span>
+                            <span>Satın Alınanlar</span>
                         </div>
 
                     </div>
                     
-                    <div className="d-flex align-items-center ">
+                    {/* <div className="d-flex align-items-center ">
 
                         <span className="d-flex align-items-center badgee">4</span>
-                    </div>
-                </li> */}
+                    </div> */}
+                </li>
 
                 <li>
 
