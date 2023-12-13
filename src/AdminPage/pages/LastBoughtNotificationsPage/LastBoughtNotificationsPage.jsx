@@ -210,7 +210,7 @@ function LastBoughtNotificationsPage() {
                             >
 
 
-                                {
+                                {boughts.length > 0  && 
                                     boughts.map((element) => {
 
                                         let date = new Date(element.createdAt)

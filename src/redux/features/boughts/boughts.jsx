@@ -52,7 +52,13 @@ export const boughtsSlice = createSlice({
         if (action.payload.data[0]?.pagination?.total_page >= action.payload.data[0]?.pagination?.current_page) {
 
           state.boughtsLoading = false
-          state.boughts.push(...action.payload.data[0].data)
+          if(state.page > 1 ){
+
+            state.boughts.push(...action.payload.data[0].data)
+          }else{
+            state.boughts = action.payload.data[0].data
+          }
+          
           state.page += 1;
         }else{
           state.hasMore = false
