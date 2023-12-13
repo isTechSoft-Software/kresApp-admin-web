@@ -19,9 +19,6 @@ function LastBoughtNotificationsPage() {
 
     const { boughts, page, hasMore } = useSelector(state => state.boughts)
 
-    const next = () => {
-        dispatch(getPurchases({ page, body }));
-    };
 
     const [packets, setpackets] = useState();
 
@@ -55,6 +52,9 @@ function LastBoughtNotificationsPage() {
         dispatch(getPurchases({ page, body }));
     }, [schoolName, packetName, isActive, date1, date2,isActive2]);
 
+    const next = () => {
+        dispatch(getPurchases({ page, body:temp }));
+    };
     const onChangeDate1 = (e) => {
         dispatch(resetPage())
         setDate1(e)
@@ -166,6 +166,7 @@ function LastBoughtNotificationsPage() {
                                         Pakete Göre Filtre
                                     </p>
                                     <select onChange={onChangePacket} className='p-1 cursorpointer' style={{ outline: "none", borderRadius: "10px" }}>
+                                        <option className='cursorpointer' value="">Filtrelenmemiş</option>
                                         {packets?.length > 0 && packets?.map((element) => {
                                             return (<option className='cursorpointer' key={element.id} value={element.packetName}>{element.packetName}</option>)
                                         })}

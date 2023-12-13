@@ -57,15 +57,11 @@ function StudentsMenu({ open, handleClose ,id }) {
                         :
 
                         <div>Sınıfta Öğrenci Yok</div>
-
-
-
                     }
 
                 </div>
             </div>
 
-            <Profile open={open2} onClose={handleClose2} role={"ogrenci"} id={sentToProfileID}></Profile>
         </Dialog>
 
     );
