@@ -212,8 +212,8 @@ function LastBoughtNotificationsPage() {
 
                                 {boughts.length > 0  && 
                                     boughts.map((element) => {
-
-                                        let date = new Date(element.createdAt)
+                                        var newActivity = element.isActive;
+                                        let date = new Date(element?.createdAt)
                                         let day = date.getDate().toString().padStart(2, '0');
                                         let month = (date.getMonth() + 1).toString().padStart(2, '0'); // Note: Months are zero-based
                                         let year = date.getFullYear();
@@ -221,16 +221,17 @@ function LastBoughtNotificationsPage() {
                                         let minutes = date.getMinutes().toString().padStart(2, '0');
 
                                         let formattedDate = `${day}.${month}.${year} ${hours}:${minutes}`;
+                                        
 
                                         return (
-                                            <div onClick={() => navigate("/okullar/" + element.School.id)} key={element.id} className='row cursorpointer eachbought'>
+                                            <div onClick={() => navigate("/okullar/" + element?.School?.id)} key={element?.id} className={newActivity ? "row cursorpointer eachbought" : "row cursorpointer eachbought solgun"}>
 
-                                                <span className='col-lg-1 col-1 text-center'>{element.id}</span>
-                                                <span className='col-lg-3 col-3 text-center'>{element.School.schoolName}</span>
-                                                <span className='col-lg-2 col-2 text-center'>{element.School.Packet.packetName}</span>
-                                                <span className='col-lg-1 col-1 text-center'>{element.School.Packet.packetPrice}</span>
-                                                <span className='col-lg-2 col-2 text-center'>{element.price} TL</span>
-                                                <span className='col-lg-1 col-1 text-center'>{element.isActive == true ? "Aktif" : "Pasif"}</span>
+                                                <span className='col-lg-1 col-1 text-center'>{element?.id}</span>
+                                                <span className='col-lg-3 col-3 text-center'>{element?.School?.schoolName}</span>
+                                                <span className='col-lg-2 col-2 text-center'>{element?.School?.Packet?.packetName}</span>
+                                                <span className='col-lg-1 col-1 text-center'>{element?.School?.Packet?.packetPrice}</span>
+                                                <span className='col-lg-2 col-2 text-center'>{element?.price} TL</span>
+                                                <span className='col-lg-1 col-1 text-center'>{element?.isActive == true ? "Aktif" : "Pasif"}</span>
                                                 <span className='col-lg-2 col-2 text-center'>{formattedDate}</span>
                                             </div>
                                         )

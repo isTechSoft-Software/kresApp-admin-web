@@ -36,8 +36,8 @@ function EachClass({ element, index, handleClickOpen }) {
         <div className="siniflarboxbody text-center d-flex flex-column justify-content-around">
             <div onClick={() => handleClickOpen(index)}>
 
-                <p className="fw-bold" style={{ color: colors.text.main }}>{element?.className} #({element?.id})</p>
-                <p><Face2Icon sx={{ color: colors.text.main }}></Face2Icon> {element?.classTeachers?.length > 0 && element?.classTeachers[0]?.Teacher?.teacherName} {element?.classTeachers?.length > 0 && element?.classTeachers[0]?.Teacher?.teacherSurname}</p>
+                <p className="fw-bold" style={{ color: colors.text.main }}>{element?.className} (#{element?.id})</p>
+                <p><Face2Icon sx={{ color: colors.text.main }}></Face2Icon> {element?.ClassTeachers?.length > 0 && element?.ClassTeachers[0]?.Teacher?.teacherName} {element?.ClassTeachers?.length > 0 && element?.ClassTeachers[0]?.Teacher?.teacherSurname}</p>
                 <div className="d-flex justify-content-center">
 
                     <p className="fw-bold" style={{ color: colors.text.main }}>Kapasite: </p><p> {element?.classStudentNum}</p>

@@ -57,13 +57,11 @@ function Classes() {
     },[])
 
     
-    const [profileStudents, setprofileStudents] = useState([]);
     
 
     const [open, setOpen] = useState(false);
 
-    const handleClickOpen = (profileStudentss) => {
-        setprofileStudents(profileStudentss)
+    const handleClickOpen = () => {
         setOpen(true);
     };
 
@@ -106,14 +104,14 @@ function Classes() {
                     {classes?.map((element, index) => {
 
                         return (
-                            <EachClass  handleClickOpen={handleClickOpen} key={element.id} element={element} index={index}> </EachClass>
+                            <EachClass id={element.id}  handleClickOpen={handleClickOpen} key={element.id} element={element} index={index}> </EachClass>
                             )
                     })}
 
                 </div>
             </div>
 
-            <StudentsMenu open={open} students={profileStudents} handleClose={handleClose}></StudentsMenu>
+            <StudentsMenu open={open} handleClose={handleClose}></StudentsMenu>
         </div>
     );
 }

@@ -6,21 +6,29 @@ import "./classes.css"
 // import EditNoteIcon from '@mui/icons-material/EditNote';
 // import DeleteForeverIcon from '@mui/icons-material/DeleteForever';
 import Profile from "../Profile/Profile";
-import { useState } from "react";
-function StudentsMenu({ open, handleClose, students }) {
+import { useEffect, useState } from "react";
+function StudentsMenu({ open, handleClose ,id }) {
 
-    const [sentToProfileID, setSentToProfileID] = useState();
+    const [students, setstudents] = useState([]);
+    
+    const ip = import.meta.env.VITE_IP;
+    const fetchStudents = async () => {
+        try {
+            
+            const res = await fetch(ip + "admin/list-students" + id)
+            const data = await res.json()
+            setstudents(data.data)
 
-    const [open2, setOpen2] = useState(false);
+        } catch (error) {
+            console.log(error);
+        }
 
-    const handleClickOpen2 = (a) => {
-        setSentToProfileID(a)
-        setOpen2(true);
-    };
+    }
 
-    const handleClose2 = () => {
-        setOpen2(false);
-    };
+    useEffect(() => {
+        fetchStudents()
+    }, []);
+
 
     return (
         <Dialog open={open} onClose={handleClose}>
@@ -29,8 +37,7 @@ function StudentsMenu({ open, handleClose, students }) {
                     <h2 className="text-center">Öğrenciler</h2>
                 </div>
                 <div className="studentlist p-2 " style={{ width: "32rem", height: "25em" }}>
-                    {!(students?.length > 0) ? <div>Sınıfta öğrenci yok</div> :
-
+                    {students?.length > 0 ? 
                         students?.map((element) => {
                             return (
 
@@ -46,6 +53,10 @@ function StudentsMenu({ open, handleClose, students }) {
                                     </div>
                                 </div>)
                         })
+                        
+                        :
+
+                        <div>Sınıfta Öğrenci Yok</div>
 
 
 

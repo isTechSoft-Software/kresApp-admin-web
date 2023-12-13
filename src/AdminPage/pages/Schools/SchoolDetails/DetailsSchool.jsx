@@ -38,6 +38,7 @@ function DetailsSchool() {
             if (data.success) {
 
                 setSchool(data.data[0])
+                fetchpayment();
             }
         } catch (error) {
             console.log(error);
@@ -50,25 +51,27 @@ function DetailsSchool() {
     const [paymentDetails, setpaymentDetails] = useState([]);
 
 
+    const fetchpayment = async () => {
+        const response = await fetch(ip + "admin/list-purchases?page=1", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+                "schoolName": school?.schoolName,
+                "packetName": ""
+            })
+
+        })
+        const data = await response.json();
+
+        setpaymentDetails(data.data[0].data)
+
+    }
+
 
     useEffect(() => {
-        getSchoolDetail(id).then(async () => {
-            const response = await fetch(ip + "admin/list-purchases?page=1", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-                body: JSON.stringify({
-                    "schoolName": school?.schoolName,
-                    "packetName": ""
-                })
-
-            })
-            const data = await response.json();
-
-            setpaymentDetails(data.data[0].data)
-
-        });
+        getSchoolDetail(id)
     }, [])
 
     const formattedDate = new Date(school?.createdAt || "2023-6-6");
