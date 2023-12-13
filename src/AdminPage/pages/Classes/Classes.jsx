@@ -13,8 +13,8 @@ function Classes() {
 
     const {id} = useParams()
 
-    const [school, setSchool] = useState();
-    const [classes, setClasses] = useState();
+    const [school, setSchool] = useState({});
+    const [classes, setClasses] = useState([]);
 
     const [studentCount, setStudentCount] = useState(0);
     const [teacherCount, setTeacherCount] = useState(0);
@@ -32,13 +32,19 @@ function Classes() {
         const res2 = await fetch(ip+"admin/list-classes/" + id)
         const data2 = await res2.json();
 
-        data2?.data?.forEach(async (element ) => {
+        const fetchPromises = data2?.data?.map(async (element ) => {
             const res = await fetch( ip + "admin/list-students/" + element.id )
             const data = await res.json();
             element.students = data.data
-            setStudentCount(studentCount + element.students.length)
-            setTeacherCount(teacherCount + element.ClassTeachers.length)
+            if (element.students) {
+                setStudentCount((prevCount) => prevCount + element.students.length);
+            }
+        
+            // ClassTeachers kontrolü ve eklenen öneri
+            setTeacherCount((prevCount) => prevCount + (element.ClassTeachers ? element.ClassTeachers.length : 0));
         })
+
+        await Promise.all(fetchPromises);
         setClasses(data2.data)
 
 

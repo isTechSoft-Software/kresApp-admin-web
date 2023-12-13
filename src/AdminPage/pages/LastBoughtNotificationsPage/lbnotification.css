@@ -27,6 +27,12 @@
     height: 80%;
 }
 
+.react-date-picker__inputGroup__input{
+    cursor: pointer;
+}
+.react-date-picker__inputGroup{
+    cursor: pointer;
+}
 
 
 @media screen and (max-width: 768px) {

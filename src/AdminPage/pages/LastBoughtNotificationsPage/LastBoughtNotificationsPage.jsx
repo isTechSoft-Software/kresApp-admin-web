@@ -9,7 +9,8 @@ import 'react-calendar/dist/Calendar.css';
 import InfiniteScroll from "react-infinite-scroll-component";
 import FilterAltIcon from '@mui/icons-material/FilterAlt';
 import { useDispatch, useSelector } from 'react-redux';
-import { getPurchases } from '../../../redux/features/boughts/boughts';
+import { getPurchases, resetPage } from '../../../redux/features/boughts/boughts';
+import { useNavigate } from 'react-router-dom';
 function LastBoughtNotificationsPage() {
 
 
@@ -19,7 +20,7 @@ function LastBoughtNotificationsPage() {
     const { boughts, page, hasMore } = useSelector(state => state.boughts)
 
     const next = () => {
-        dispatch(getPurchases({page, body}));
+        dispatch(getPurchases({ page, body }));
     };
 
     const [packets, setpackets] = useState();
@@ -29,39 +30,55 @@ function LastBoughtNotificationsPage() {
     const [date1, setDate1] = useState(new Date('2020-1-1'));
     const [date2, setDate2] = useState(new Date());
     const [isActive, setisActive] = useState(true);
+    const [isActive2, setisActive2] = useState(false);
 
 
-    let body = {
+    let temp = {
         schoolName,
         packetName,
-        isActive,
+        isActive: (isActive == true && isActive2 == false ? true : false ),
         createdAt: {
-            createdAtStart: date1?.getFullYear() + "-" + (date1?.getMonth()+1) + "-" + date1?.getDate() || "2020-1-1",
-            createdAtEnd: date2?.getFullYear() + "-" + (date2?.getMonth()+1) + "-" + date2?.getDate() || "2020-1-1"
+            createdAtStart: date1?.getFullYear() + "-" + (date1?.getMonth() + 1) + "-" + date1?.getDate() || "2020-1-1",
+            createdAtEnd: date2?.getFullYear() + "-" + (date2?.getMonth() + 1) + "-" + date2?.getDate() || "2020-1-1"
         }
     }
     useEffect(() => {
 
         getPackets();
 
+        var body = temp;
+
+        if((isActive == true && isActive2 == true) || (isActive == false && isActive2 == false) ){
+            delete body.isActive
+        } 
+
         dispatch(getPurchases({ page, body }));
-    }, [schoolName, packetName, isActive, date1, date2]);
+    }, [schoolName, packetName, isActive, date1, date2,isActive2]);
 
     const onChangeDate1 = (e) => {
+        dispatch(resetPage())
         setDate1(e)
     }
 
+    const onChangeActive2 = (e) => {
+        dispatch(resetPage())
+        setisActive2(!isActive2)
+    }
     const onChangeActive = (e) => {
+        dispatch(resetPage())
         setisActive(!isActive)
     }
     const onChangeDate2 = (e) => {
+        dispatch(resetPage())
         setDate2(e)
     }
 
     const onChangePacket = (e) => {
+        dispatch(resetPage())
         setpacketName(e.target.value)
     }
     const onChangeSchoolName = (e) => {
+        dispatch(resetPage())
         setschoolName(e.target.value)
     }
     const ip = import.meta.env.VITE_IP;
@@ -93,7 +110,7 @@ function LastBoughtNotificationsPage() {
     //     dispatch(getPurchases({page,body}));
     // }, [])
 
-
+    const navigate = useNavigate();
 
     return (
         <div className="p-4">
@@ -122,9 +139,10 @@ function LastBoughtNotificationsPage() {
                                 <span style={{ color: "#3A416F" }} className="col-lg-1 col-1 sp fw-bold">#ID</span>
                                 <span style={{ color: "#3A416F" }} className="col-lg-3 col-3 sp fw-bold">İsim</span>
                                 <span style={{ color: "#3A416F" }} className="col-lg-2 col-2 sp fw-bold">Paket</span>
-                                <span style={{ color: "#3A416F" }} className="col-lg-2 col-2 sp fw-bold">Yıllık Ücret</span>
+                                <span style={{ color: "#3A416F" }} className="col-lg-1 col-1 sp fw-bold">Yıllık Ücret</span>
+                                <span style={{ color: "#3A416F" }} className="col-lg-2 col-2 sp fw-bold">Son Fatura</span>
                                 <span style={{ color: "#3A416F" }} className="col-lg-1 col-1 sp fw-bold">Aktif</span>
-                                <span style={{ color: "#3A416F" }} className="col-lg-3 col-3 sp fw-bold">Oluşturulma Tarihi</span>
+                                <span style={{ color: "#3A416F" }} className="col-lg-2 col-2 sp fw-bold">Oluşturulma Tarihi</span>
 
 
                             </div>
@@ -147,20 +165,25 @@ function LastBoughtNotificationsPage() {
                                     <p>
                                         Pakete Göre Filtre
                                     </p>
-                                    <select onChange={onChangePacket} className='p-1' style={{ outline: "none", borderRadius: "10px" }}>
+                                    <select onChange={onChangePacket} className='p-1 cursorpointer' style={{ outline: "none", borderRadius: "10px" }}>
                                         {packets?.length > 0 && packets?.map((element) => {
-                                            return (<option key={element.id} value={element.packetName}>{element.packetName}</option>)
+                                            return (<option className='cursorpointer' key={element.id} value={element.packetName}>{element.packetName}</option>)
                                         })}
 
                                     </select>
 
                                 </div>
-                                <div className='d-flex justify-content-between'>
-                                    <p>Eski Durum</p>
-                                    <input type='checkbox' checked={isActive} onClick={onChangeActive} />
-                                    <div>
+                                <div className='d-flex flex-column'>
+                                    <div className='d-flex justify-content-between'>
+                                        <span>Son Satın Alımlar</span>
+                                        <input style={{width: "15px" }} className='cursorpointer' type='checkbox' checked={isActive} onClick={onChangeActive} />
+
                                     </div>
-                                    <div></div>
+                                    <div className='d-flex justify-content-between'>
+                                        <span>Geçmiş Satın Alımlar</span>
+                                        <input style={{width: "15px" }} className='cursorpointer' type='checkbox' checked={isActive2} onClick={onChangeActive2} />
+
+                                    </div>
                                 </div>
                                 <div className='d-flex flex-column '>
                                     <p>Oluşturulma Tarihi</p>
@@ -200,14 +223,15 @@ function LastBoughtNotificationsPage() {
                                         let formattedDate = `${day}.${month}.${year} ${hours}:${minutes}`;
 
                                         return (
-                                            <div key={element.id} className='row eachbought'>
+                                            <div onClick={() => navigate("/okullar/" + element.School.id)} key={element.id} className='row cursorpointer eachbought'>
 
-                                                <span className='col-1 text-center'>{element.id}</span>
-                                                <span className='col-3 text-center'>{element.School.schoolName}</span>
-                                                <span className='col-2 text-center'>{element.School.Packet.packetName}</span>
-                                                <span className='col-2 text-center'>{element.School.Packet.packetPrice}</span>
-                                                <span className='col-1 text-center'>{element.isActive == true ? "Aktif" : "Pasif"}</span>
-                                                <span className='col-3 text-center'>{formattedDate}</span>
+                                                <span className='col-lg-1 col-1 text-center'>{element.id}</span>
+                                                <span className='col-lg-3 col-3 text-center'>{element.School.schoolName}</span>
+                                                <span className='col-lg-2 col-2 text-center'>{element.School.Packet.packetName}</span>
+                                                <span className='col-lg-1 col-1 text-center'>{element.School.Packet.packetPrice}</span>
+                                                <span className='col-lg-2 col-2 text-center'>{element.price} TL</span>
+                                                <span className='col-lg-1 col-1 text-center'>{element.isActive == true ? "Aktif" : "Pasif"}</span>
+                                                <span className='col-lg-2 col-2 text-center'>{formattedDate}</span>
                                             </div>
                                         )
                                     })}

@@ -39,8 +39,8 @@ export const boughtsSlice = createSlice({
   name: 'boughts',
   initialState,
   reducers: {
-    incPage: (state) => {
-      state.page += 1
+    resetPage: (state) => {
+      state.page = 1
     },
 
   },//builder
@@ -68,6 +68,6 @@ export const boughtsSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-// export const {incPage } = schoolsSlice.actions
+export const { resetPage } = boughtsSlice.actions
 
 export default boughtsSlice.reducer
