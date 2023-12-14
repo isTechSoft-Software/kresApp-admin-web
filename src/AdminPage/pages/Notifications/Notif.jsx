@@ -60,9 +60,6 @@ function Notif() {
                 selectedFiles.forEach((element) => {
                     formData.append(`documents`, element);
                 });
-                formData.forEach((value, key) => {
-                    console.log(`${key}: ${value}`);
-                });
 
                 await fetch(ip + "admin/create-announcement-to-owners", {
                     method: "POST",

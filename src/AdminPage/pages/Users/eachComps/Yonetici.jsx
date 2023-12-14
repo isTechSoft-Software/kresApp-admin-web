@@ -13,7 +13,7 @@ function Yonetici({ item , handleClickOpenProfile , setSentToProfile  }) {
 
     const date = new Date(item.School.createdAt);
     const formattedDate = `${date.getUTCDate().toString().padStart(2, '0')}.${(date.getUTCMonth() + 1).toString().padStart(2, '0')}.${date.getUTCFullYear()}`;
-    console.log(formattedDate);
+    
     return (
 
 

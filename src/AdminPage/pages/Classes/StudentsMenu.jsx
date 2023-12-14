@@ -14,8 +14,7 @@ function StudentsMenu({ open, handleClose ,id }) {
     const ip = import.meta.env.VITE_IP;
     const fetchStudents = async () => {
         try {
-            
-            const res = await fetch(ip + "admin/list-students" + id)
+            const res = await fetch(ip + "admin/list-students/" + id)
             const data = await res.json()
             setstudents(data.data)
 
@@ -37,6 +36,11 @@ function StudentsMenu({ open, handleClose ,id }) {
                     <h2 className="text-center">Öğrenciler</h2>
                 </div>
                 <div className="studentlist p-2 " style={{ width: "32rem", height: "25em" }}>
+                <div className="row border-bottom">
+                    <div className="col-3 text-center">TCNO</div>
+                    <div className="col-6 text-center">İsim</div>
+                    <div className="col-3 text-center">Veli Telefon</div>
+                </div>
                     {students?.length > 0 ? 
                         students?.map((element) => {
                             return (

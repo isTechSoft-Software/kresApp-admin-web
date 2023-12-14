@@ -34,12 +34,24 @@ function DetailsSchool() {
         try {
 
             const res = await fetch(ip + "admin/get-school-detail/" + action,)
-            const data = await res.json();
-            if (data.success) {
-
+            const data2 = await res.json().then(async (data) => {
                 setSchool(data.data[0])
-                fetchpayment();
-            }
+                const response = await fetch(ip + "admin/list-purchases?page=1", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({
+                        "schoolName": data.data[0].schoolName,
+                        "packetName": ""
+                    })
+        
+                })
+                const datae = await response.json();
+        
+                setpaymentDetails(datae.data[0].data)
+        
+            })
         } catch (error) {
             console.log(error);
 
@@ -50,24 +62,6 @@ function DetailsSchool() {
 
     const [paymentDetails, setpaymentDetails] = useState([]);
 
-
-    const fetchpayment = async () => {
-        const response = await fetch(ip + "admin/list-purchases?page=1", {
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-                "schoolName": school?.schoolName,
-                "packetName": ""
-            })
-
-        })
-        const data = await response.json();
-
-        setpaymentDetails(data.data[0].data)
-
-    }
 
 
     useEffect(() => {

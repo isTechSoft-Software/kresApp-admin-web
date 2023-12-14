@@ -7,9 +7,21 @@ import "./classes.css"
 import SchoolIcon from '@mui/icons-material/School';
 import Face2Icon from '@mui/icons-material/Face2';
 import { colors } from "../../color";
-function EachClass({ element, index, handleClickOpen }) {
+import StudentsMenu from "./StudentsMenu";
+import { useState } from "react";
+function EachClass({ element, index }) {
 
 
+
+    const [open, setOpen] = useState(false);
+
+    const handleClickOpen = () => {
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
 
     // const [editMode, setEditMode] = useState(false)
 
@@ -51,6 +63,8 @@ function EachClass({ element, index, handleClickOpen }) {
 
 
         </div>
+        
+        <StudentsMenu id={element?.id} open={open} handleClose={handleClose}></StudentsMenu>
     </div>);
 }
 

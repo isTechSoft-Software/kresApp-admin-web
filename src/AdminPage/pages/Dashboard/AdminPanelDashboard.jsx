@@ -77,9 +77,10 @@ function AdminPanelDashboard() {
                         </div>
                         <div className="w-100 m-2 overflow-hidden" style={{ background: "white" }}>
                             {lastBoughtLoading && <div className="d-flex justify-content-center mt-2"><div style={{fontSize: "10px"}} className="spinner-border "></div></div>}
+                        
                             {lastBought?.map((element) => {
                                 return (
-                                    <LastBought key={element._id} element={element}></LastBought>
+                                    <LastBought key={element.id} element={element}></LastBought>
                                 )
                             })}
 

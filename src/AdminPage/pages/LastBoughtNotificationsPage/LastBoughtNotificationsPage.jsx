@@ -230,7 +230,7 @@ function LastBoughtNotificationsPage() {
                                                 <span className='col-lg-1 col-1 text-center'>{element?.id}</span>
                                                 <span className='col-lg-3 col-3 text-center'>{element?.School?.schoolName}</span>
                                                 <span className='col-lg-2 col-2 text-center'>{element?.School?.Packet?.packetName}</span>
-                                                <span className='col-lg-1 col-1 text-center'>{element?.School?.Packet?.packetPrice}</span>
+                                                <span className='col-lg-1 col-1 text-center'>{element?.School?.Packet?.packetPrice} TL</span>
                                                 <span className='col-lg-2 col-2 text-center'>{element?.price} TL</span>
                                                 <span className='col-lg-1 col-1 text-center'>{element?.isActive == true ? "Aktif" : "Pasif"}</span>
                                                 <span className='col-lg-2 col-2 text-center'>{formattedDate}</span>

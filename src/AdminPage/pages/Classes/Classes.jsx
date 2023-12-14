@@ -58,16 +58,6 @@ function Classes() {
 
     
     
-
-    const [open, setOpen] = useState(false);
-
-    const handleClickOpen = () => {
-        setOpen(true);
-    };
-
-    const handleClose = () => {
-        setOpen(false);
-    };
     return (
         <div className="">
             <div className="classesust border-bottom p-4">
@@ -104,14 +94,13 @@ function Classes() {
                     {classes?.map((element, index) => {
 
                         return (
-                            <EachClass id={element.id}  handleClickOpen={handleClickOpen} key={element.id} element={element} index={index}> </EachClass>
+                            <EachClass id={element.id}  key={element.id} element={element} index={index}> </EachClass>
                             )
                     })}
 
                 </div>
             </div>
 
-            <StudentsMenu open={open} handleClose={handleClose}></StudentsMenu>
         </div>
     );
 }

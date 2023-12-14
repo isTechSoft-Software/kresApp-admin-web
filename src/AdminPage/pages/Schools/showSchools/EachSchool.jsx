@@ -9,7 +9,6 @@ import { useNavigate } from "react-router-dom";
 function EachSchool({ owner, school }) {
     const createDate = new Date(school?.createdAt);
     const navigate = useNavigate();
-    console.log(school);
     const handleClick = () => {
         const data = {
             school,
